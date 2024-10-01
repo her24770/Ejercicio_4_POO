@@ -3,10 +3,16 @@ package clases;
 public class Serpiente extends Reptil{
     private String especie;
     private String color;
-    private Boolean venenosa;
-    private Boolean tipoVeneno;
+    private boolean venenosa;
+    private boolean tipoVeneno;
 
     //Metodos
+    public Serpiente(String nombreCientifico, String String especie, String color, boolean venenosa,){
+        this.especie = especie;
+        this.color = color;
+        this.venenosa = venenosa;
+    }
+
     public void setEspecie(String especie) {
         this.especie = especie;
     }

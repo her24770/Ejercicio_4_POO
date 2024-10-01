@@ -9,17 +9,26 @@ public class Reptil extends Animal{
     private  String dieta;
     private double longitud;
 
-    public Reptil(int temperatura, double huevos, double peso, int longevidad, boolean peligroExt, String dieta){
+    public Reptil(String nombreCientifico, String descripcionHabitat, int vidaEsperanza, boolean intercambio, int temperatura, double huevos, double peso, int longevidad, boolean peligroExt, String dieta, double longitud) {
+        super(nombreCientifico, descripcionHabitat, vidaEsperanza);
         this.temperatura = temperatura;
         this.huevos = huevos;
         this.peso = peso;
         this.longevidad = longevidad;
         this.peligroExt = peligroExt;
         this.dieta = dieta;
+        this.longitud = longitud;
     }
 
     public Reptil(){
 
+    }
+
+    public double getLongitud() {
+        return longitud;
+    }
+    public void setLongitud(double longitud) {
+        this.longitud = longitud;
     }
 
     public void setTemperatura(int temperatura){
