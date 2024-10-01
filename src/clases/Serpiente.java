@@ -7,10 +7,12 @@ public class Serpiente extends Reptil{
     private boolean tipoVeneno;
 
     //Metodos
-    public Serpiente(String nombreCientifico, String String especie, String color, boolean venenosa,){
+    public Serpiente(String nombreCientifico, String descripcionHabitat, int vidaEsperanza, boolean intercambio, int temperatura, double huevos, double peso, int longevidad, boolean peligroExt, String dieta, double longitud, String especie, String color, boolean venenosa, boolean tipoVeneno) {
+        super(nombreCientifico, descripcionHabitat, vidaEsperanza, intercambio, temperatura, huevos, peso, longevidad, peligroExt, dieta, longitud);
         this.especie = especie;
         this.color = color;
         this.venenosa = venenosa;
+        this.tipoVeneno = tipoVeneno;
     }
 
     public void setEspecie(String especie) {

@@ -42,6 +42,8 @@ public class SerpientesController {
                 boolean venenosa = Boolean.parseBoolean(datos[13].trim());
                 boolean tipoVeneno = Boolean.parseBoolean(datos[14].trim());
                 //Crear objeto y guardar en csv
+                serpiente = new Serpiente(nombreCientifico, descripcionHabitat,vidaEsperanza, intercambio, temperatura, huevos, peso, longevidad, peligroExt, dieta, longitud, especie, color, venenosa, tipoVeneno);
+                serpientes.add(serpiente);
 
             }
         } catch (IOException e) {

@@ -1,13 +1,13 @@
 package clases;
 
 public class Reptil extends Animal{
-    private int temperatura;
-    private  double huevos;
-    private  double peso;
-    private  int longevidad;
-    private  boolean peligroExt;
-    private  String dieta;
-    private double longitud;
+    protected int temperatura;
+    protected  double huevos;
+    protected  double peso;
+    protected  int longevidad;
+    protected  boolean peligroExt;
+    protected  String dieta;
+    protected double longitud;
 
     public Reptil(String nombreCientifico, String descripcionHabitat, int vidaEsperanza, boolean intercambio, int temperatura, double huevos, double peso, int longevidad, boolean peligroExt, String dieta, double longitud) {
         super(nombreCientifico, descripcionHabitat, vidaEsperanza);

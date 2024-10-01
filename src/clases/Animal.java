@@ -1,10 +1,10 @@
 package clases;
 
 public class Animal {
-    private String nombreCientifico;
-    private String descripcionHabitat;
-    private int vidaEsperanza;
-    private Boolean intercambio;
+    protected String nombreCientifico;
+    protected String descripcionHabitat;
+    protected int vidaEsperanza;
+    protected Boolean intercambio;
 
     public Animal(String nombreCientifico, String descripcionHabitat, int vidaEsperanza){
         this.nombreCientifico = nombreCientifico;
