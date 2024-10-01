@@ -1,4 +1,4 @@
-import Controlador.*;
+import controlador.*;
 import clases.*;
 import vistas.Home;
 
@@ -19,14 +19,13 @@ public class Main {
         //PRUEBA PARA METODOS DE SERPIENTES
         SerpientesController serpienteC = new SerpientesController();
         List<Serpiente> serpientes = serpienteC.listSerpientes();
+        List<Serpiente> historialS = serpienteC.historialSerpientes();
 
         System.out.println("popo");
-        for (Serpiente serpiente : serpientes){
+        for (Serpiente serpiente : historialS){
             System.out.print(serpiente.toString());
         }
-        for (Serpiente serpiente : serpientes){
-            System.out.print(serpiente.getIntercambio());
-        }
+
     }
 
 }

@@ -1,9 +1,11 @@
 package vistas;
 
-import clases.ReptilAcuatico;
-import clases.Serpiente;
+import clases.*;
+import controlador.*;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +21,8 @@ public class Home extends JFrame{
     //Listas
     List<Serpiente> serpientesList = new ArrayList<>();
     List<ReptilAcuatico> reptilesAcuaticosList = new ArrayList<>();
+    //controllers
+    SerpientesController serpientesController = new SerpientesController();
 
 
     public JPanel getPanelHome() {
@@ -27,7 +31,12 @@ public class Home extends JFrame{
 
 
     public Home() {
+        btnserpiente.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
 
+            }
+        });
 
     }
 

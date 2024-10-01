@@ -1,4 +1,4 @@
-package Controlador;
+package controlador;
 import clases.*;
 
 import java.io.BufferedReader;
@@ -42,10 +42,8 @@ public class SerpientesController {
                 boolean venenosa = Boolean.parseBoolean(datos[12].trim());
                 boolean tipoVeneno = Boolean.parseBoolean(datos[13].trim());
                 //Crear objeto y guardar en csv
-                System.out.print("esoo");
                 Serpiente serpiente = new Serpiente(nombreCientifico, descripcionHabitat,vidaEsperanza, intercambio, temperatura, huevos, peso, peligroExt, dieta, longitud, especie, color, venenosa, tipoVeneno);
                 serpientes.add(serpiente);
-                System.out.print(serpiente);
 
             }
         } catch (IOException e) {
@@ -81,7 +79,7 @@ public class SerpientesController {
 
     public List<Serpiente> historialSerpientes(){
         List<Serpiente> allserpientes = listSerpientes();
-        List<Serpiente> intercambiados = listSerpientes();
+        List<Serpiente> intercambiados = new ArrayList<>();
 
         for (Serpiente serpiente : allserpientes){
             if (serpiente.getIntercambio() == true){
