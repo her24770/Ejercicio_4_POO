@@ -4,6 +4,7 @@ public class Animal {
     private String nombreCientifico;
     private String descripcionHabitat;
     private int vidaEsperanza;
+    private Boolean intercambio;
 
     public Animal(String nombreCientifico, String descripcionHabitat, int vidaEsperanza){
         this.nombreCientifico = nombreCientifico;
@@ -12,7 +13,14 @@ public class Animal {
     }
 
     public Animal(){
+    }
 
+    public void setIntercambio(Boolean intercambio){
+        this.intercambio = intercambio;
+    }
+
+    public Boolean getIntercambio(){
+        return intercambio;
     }
 
     public void setNombreCientifico(String nombreCientifico){

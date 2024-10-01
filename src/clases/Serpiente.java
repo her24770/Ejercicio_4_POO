@@ -2,7 +2,6 @@ package clases;
 
 public class Serpiente extends Reptil{
     private String especie;
-    private double longitud;
     private String color;
     private Boolean venenosa;
     private Boolean tipoVeneno;
@@ -13,12 +12,6 @@ public class Serpiente extends Reptil{
     }
     public String getEspecie() {
         return especie;
-    }
-    public void setLongitud(double longitud) {
-        this.longitud = longitud;
-    }
-    public double getLongitud() {
-        return longitud;
     }
     public void setColor(String color) {
         this.color = color;

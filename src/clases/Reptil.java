@@ -7,6 +7,7 @@ public class Reptil extends Animal{
     private  int longevidad;
     private  boolean peligroExt;
     private  String dieta;
+    private double longitud;
 
     public Reptil(int temperatura, double huevos, double peso, int longevidad, boolean peligroExt, String dieta){
         this.temperatura = temperatura;
