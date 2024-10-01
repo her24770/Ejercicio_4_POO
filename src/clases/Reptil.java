@@ -4,17 +4,15 @@ public class Reptil extends Animal{
     protected int temperatura;
     protected  double huevos;
     protected  double peso;
-    protected  int longevidad;
     protected  boolean peligroExt;
     protected  String dieta;
     protected double longitud;
 
-    public Reptil(String nombreCientifico, String descripcionHabitat, int vidaEsperanza, boolean intercambio, int temperatura, double huevos, double peso, int longevidad, boolean peligroExt, String dieta, double longitud) {
+    public Reptil(String nombreCientifico, String descripcionHabitat, int vidaEsperanza, boolean intercambio, int temperatura, double huevos, double peso, boolean peligroExt, String dieta, double longitud) {
         super(nombreCientifico, descripcionHabitat, vidaEsperanza);
         this.temperatura = temperatura;
         this.huevos = huevos;
         this.peso = peso;
-        this.longevidad = longevidad;
         this.peligroExt = peligroExt;
         this.dieta = dieta;
         this.longitud = longitud;
@@ -51,13 +49,6 @@ public class Reptil extends Animal{
     }
     public double getPeso(){
         return peso;
-    }
-
-    public void setLongevidad(int longevidad){
-        this.longevidad = longevidad;
-    }
-    public int getLongevidad(){
-        return longevidad;
     }
 
     public void setPeligroExt(boolean peligroExt){

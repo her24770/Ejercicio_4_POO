@@ -13,7 +13,7 @@ public class SerpientesController {
     public List<Serpiente> listSerpientes(){
         List<Serpiente> serpientes = new ArrayList<>();
 
-        try (BufferedReader br = new BufferedReader(new FileReader("reptilesAcuaticosBD.csv"))){
+        try (BufferedReader br = new BufferedReader(new FileReader("reptilesSerpientesBD.csv"))){
             String linea;
             boolean firstLine = true;
 
@@ -33,7 +33,6 @@ public class SerpientesController {
                 int temperatura = Integer.parseInt(datos[4].trim());
                 double huevos = Double.parseDouble(datos[5].trim());
                 double peso = Double.parseDouble(datos[6].trim());
-                int longevidad = Integer.parseInt(datos[7].trim());
                 boolean peligroExt = Boolean.parseBoolean(datos[8].trim());
                 String dieta = datos[9].trim();
                 double longitud = Double.parseDouble(datos[10].trim());
@@ -42,7 +41,7 @@ public class SerpientesController {
                 boolean venenosa = Boolean.parseBoolean(datos[13].trim());
                 boolean tipoVeneno = Boolean.parseBoolean(datos[14].trim());
                 //Crear objeto y guardar en csv
-                Serpiente serpiente = new Serpiente(nombreCientifico, descripcionHabitat,vidaEsperanza, intercambio, temperatura, huevos, peso, longevidad, peligroExt, dieta, longitud, especie, color, venenosa, tipoVeneno);
+                Serpiente serpiente = new Serpiente(nombreCientifico, descripcionHabitat,vidaEsperanza, intercambio, temperatura, huevos, peso, peligroExt, dieta, longitud, especie, color, venenosa, tipoVeneno);
                 serpientes.add(serpiente);
 
             }
