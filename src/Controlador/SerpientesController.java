@@ -14,7 +14,7 @@ public class SerpientesController {
     public List<Serpiente> listSerpientes(){
         List<Serpiente> serpientes = new ArrayList<>();
 
-        try (BufferedReader br = new BufferedReader(new FileReader("reptilesSerpientesBD.csv"))){
+        try (BufferedReader br = new BufferedReader(new FileReader("src/bd/reptilesSerpientesBD.csv"))){
             String linea;
             boolean firstLine = true;
 
@@ -34,26 +34,28 @@ public class SerpientesController {
                 int temperatura = Integer.parseInt(datos[4].trim());
                 double huevos = Double.parseDouble(datos[5].trim());
                 double peso = Double.parseDouble(datos[6].trim());
-                boolean peligroExt = Boolean.parseBoolean(datos[8].trim());
-                String dieta = datos[9].trim();
-                double longitud = Double.parseDouble(datos[10].trim());
-                String especie = datos[11].trim();
-                String color = datos[12].trim();
-                boolean venenosa = Boolean.parseBoolean(datos[13].trim());
-                boolean tipoVeneno = Boolean.parseBoolean(datos[14].trim());
+                boolean peligroExt = Boolean.parseBoolean(datos[7].trim());
+                String dieta = datos[8].trim();
+                double longitud = Double.parseDouble(datos[9].trim());
+                String especie = datos[10].trim();
+                String color = datos[11].trim();
+                boolean venenosa = Boolean.parseBoolean(datos[12].trim());
+                boolean tipoVeneno = Boolean.parseBoolean(datos[13].trim());
                 //Crear objeto y guardar en csv
+                System.out.print("esoo");
                 Serpiente serpiente = new Serpiente(nombreCientifico, descripcionHabitat,vidaEsperanza, intercambio, temperatura, huevos, peso, peligroExt, dieta, longitud, especie, color, venenosa, tipoVeneno);
                 serpientes.add(serpiente);
+                System.out.print(serpiente);
 
             }
         } catch (IOException e) {
-
+            System.err.println(e.getMessage());
         }
         return serpientes;
     }
 
     public void addSerpiente(Serpiente newSerpiente){
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter("ReptilesSerpientesBD", true))){
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("reptilesSerpientesBD", true))){
             //Volver atributos en String
             String nuevaLinea = newSerpiente.getNombreCientifico() + "," +
                                 newSerpiente.getDescripcionHabitat() + "," +
@@ -76,5 +78,18 @@ public class SerpientesController {
 
         }
     }
+
+    public List<Serpiente> historialSerpientes(){
+        List<Serpiente> allserpientes = listSerpientes();
+        List<Serpiente> intercambiados = listSerpientes();
+
+        for (Serpiente serpiente : allserpientes){
+            if (serpiente.getIntercambio() == true){
+                intercambiados.add(serpiente);
+            }
+        }
+        return intercambiados;
+    }
+
 
 }

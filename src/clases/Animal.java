@@ -4,22 +4,23 @@ public class Animal {
     protected String nombreCientifico;
     protected String descripcionHabitat;
     protected int vidaEsperanza;
-    protected Boolean intercambio;
+    protected boolean intercambio;
 
-    public Animal(String nombreCientifico, String descripcionHabitat, int vidaEsperanza){
+    public Animal(String nombreCientifico, String descripcionHabitat, int vidaEsperanza, boolean intercambio) {
         this.nombreCientifico = nombreCientifico;
         this.descripcionHabitat = descripcionHabitat;
         this.vidaEsperanza = vidaEsperanza;
+        this.intercambio = intercambio;
     }
 
     public Animal(){
     }
 
-    public void setIntercambio(Boolean intercambio){
+    public void setIntercambio(boolean intercambio){
         this.intercambio = intercambio;
     }
 
-    public Boolean getIntercambio(){
+    public boolean getIntercambio(){
         return intercambio;
     }
 

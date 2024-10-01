@@ -9,7 +9,7 @@ public class Reptil extends Animal{
     protected double longitud;
 
     public Reptil(String nombreCientifico, String descripcionHabitat, int vidaEsperanza, boolean intercambio, int temperatura, double huevos, double peso, boolean peligroExt, String dieta, double longitud) {
-        super(nombreCientifico, descripcionHabitat, vidaEsperanza);
+        super(nombreCientifico, descripcionHabitat, vidaEsperanza, intercambio);
         this.temperatura = temperatura;
         this.huevos = huevos;
         this.peso = peso;

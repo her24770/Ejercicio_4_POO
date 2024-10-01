@@ -125,7 +125,7 @@ public class Serpiente extends Reptil{
                 "\nHabitat: " + descripcionHabitat +
                 "\nEsperanza de vida: " + vidaEsperanza +" años" +
                 "\nIntercambio: " + intercambio +
-                "\nTemperatura: " + temperatura +
+                "\nTemperatura: " + temperatura + "° C" +
                 "\nProm. huevos/puesta: " + huevos +
                 "\nPeso: " + peso + " kg" +
                 "\nEn peligro: " + peligroExt +
