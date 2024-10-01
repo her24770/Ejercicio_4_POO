@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SerpientesController {
+
     public List<Serpiente> listSerpientes(){
         List<Serpiente> serpientes = new ArrayList<>();
 
@@ -50,4 +51,30 @@ public class SerpientesController {
         }
         return serpientes;
     }
+
+    public void addSerpiente(Serpiente newSerpiente){
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("ReptilesSerpientesBD", true))){
+            //Volver atributos en String
+            String nuevaLinea = newSerpiente.getNombreCientifico() + "," +
+                                newSerpiente.getDescripcionHabitat() + "," +
+                                newSerpiente.getVidaEsperanza() + "," +
+                                newSerpiente.getIntercambio() + "," +
+                                newSerpiente.getTemperatura() + "," +
+                                newSerpiente.getHuevos() + "," +
+                                newSerpiente.getPeso() + "," +
+                                newSerpiente.getPeligroExt() + "," +
+                                newSerpiente.getDieta() + "," +
+                                newSerpiente.getLongitud() + "," +
+                                newSerpiente.getEspecie() + "," +
+                                newSerpiente.getColor() + "," +
+                                newSerpiente.getVenenosa() + "," +
+                                newSerpiente.getTipoVeneno();
+            //Escribir la linea en el csv
+            bw.write(nuevaLinea);
+            bw.newLine();
+        }catch (IOException e){
+
+        }
+    }
+
 }

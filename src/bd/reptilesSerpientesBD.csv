@@ -1,2 +1,2 @@
-NombreCientfico, descripcionHabitat, vidaEsperanza, intercambio, temperatura, huevos, peso, longevidad, peligroExt, dieta, longitud, especie, color, venenosa, tipoVeneno
-Toilet, rocoso, 15, true, 25, 3.5, 11, 5, true, carnivoro, 11, filanguis, rojo, false, false,
+NombreCientfico, descripcionHabitat, vidaEsperanza, intercambio, temperatura, huevos, peso, peligroExt, dieta, longitud, especie, color, venenosa, tipoVeneno
+Toilet, rocoso, 15, true, 25, 3.5, 11, true, carnivoro, 11, filanguis, rojo, false, false,
