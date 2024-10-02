@@ -64,6 +64,34 @@ public class ReptilAcuatico extends Reptil{
     }
 
     public String toString() {
+        String recinto = "";
+        int costoMantener=0;
+        if (especie=="t"){
+            if (longitud < 20) {
+                recinto= "Pequeño (1-2 metros cuadrados )";
+                costoMantener=50;
+            } else if (longitud >= 20 && longitud <= 40) {
+                recinto= "Mediano (2-4 metros cuadrados)";
+                costoMantener=200;
+            } else {
+                recinto= "Grande (4-6 metros cuadrados)";
+                costoMantener=500;
+            }
+        }else{
+            if (longitud < 100) {
+                recinto= "Pequeño (1-2 metros cuadrados )";
+                costoMantener=50;
+            } else if (longitud >= 100 && longitud <= 200) {
+                costoMantener=100;
+                recinto= "Mediano (2-4 metros cuadrados)";
+            } else {
+                recinto= "Grande (4-6 metros cuadrados)";
+                costoMantener=500;
+            }
+        }
+
+
+
         return "\nNombre cientifico: " + nombreCientifico +
                 "\nHabitat: " + descripcionHabitat +
                 "\nEsperanza de vida: " + vidaEsperanza +" años" +
@@ -77,7 +105,8 @@ public class ReptilAcuatico extends Reptil{
                 "\nEspecie: " + especie +
                 "\nAgua: " + agua +
                 "\nVelocidad de Nado: " + nado + " km/h "+
-                "\nTiempo de Buceo: " + buceo + "min";
+                "\nTiempo de Buceo: " + buceo + "min"+
+                "\nRecinto: " + recinto;
     }
 
 }

@@ -120,6 +120,20 @@ public class Serpiente extends Reptil{
     }
 
     public String toString() {
+        int costoMantener=0;
+        String recinto = "";
+        if (longitud < 1) {
+            recinto= "Pequeño (1-2 metros cuadrados )";
+            costoMantener=50;
+        } else if (longitud >= 1 && longitud <= 2) {
+            recinto= "Mediano (2-4 metros cuadrados)";
+            costoMantener=100;
+        } else {
+            recinto= "Grande (4-6 metros cuadrados)";
+            costoMantener=200;
+        }
+
+
         String type = null;
         if (tipoVeneno) {
             type = "\nTipo de veneno: Neurotoxico";
@@ -141,6 +155,7 @@ public class Serpiente extends Reptil{
                 "\nEspecie: " + especie +
                 "\nColor: " + color +
                 "\nVenenosa: " + venenosa +
+                "\nRecinto: " + recinto +
                 type;
     }
 }

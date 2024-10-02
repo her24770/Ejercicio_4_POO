@@ -49,7 +49,7 @@ public class ReptilesAcuaticosController {
     }
 
     public void addReptilAcuatico(ReptilAcuatico newReptilAcuatico){
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter("reptilesAcuaticosBD", true))){
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("src/bd/reptilesAcuaticosBD.csv", true))){
             //Volver atributos en String
             String nuevaLinea = newReptilAcuatico.getNombreCientifico() + "," +
                     newReptilAcuatico.getDescripcionHabitat() + "," +
@@ -75,7 +75,7 @@ public class ReptilesAcuaticosController {
 
     public List<ReptilAcuatico> historialReptilesAcuaticos(){
         List<ReptilAcuatico> allreptilesAcuaticos = listReptilesAcuaticos();
-        List<ReptilAcuatico> intercambiados = listReptilesAcuaticos();
+        List<ReptilAcuatico> intercambiados = new ArrayList<>();
 
         for (ReptilAcuatico reptilAcuatico : allreptilesAcuaticos){
             if (reptilAcuatico.getIntercambio() == true){

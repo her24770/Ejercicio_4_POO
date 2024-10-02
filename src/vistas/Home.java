@@ -103,6 +103,19 @@ public class Home extends JFrame{
             }
         });
 
+        btnHistorial.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Historial viewHistorial = new Historial();
+                viewHistorial.setTitle("Registro Animal");
+                viewHistorial.setContentPane(viewHistorial.getPanelHitorial());
+                viewHistorial.setSize(500,400);
+                viewHistorial.setVisible(true);
+                viewHistorial.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            }
+        });
+
+
     }
 
 }

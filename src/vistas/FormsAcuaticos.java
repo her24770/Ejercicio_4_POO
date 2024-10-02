@@ -6,6 +6,7 @@ import controlador.ReptilesAcuaticosController;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Objects;
 
 public class FormsAcuaticos extends JFrame{
     private JPanel panelAcuatico;
@@ -47,7 +48,6 @@ public class FormsAcuaticos extends JFrame{
                     newAcuatico.setNombreCientifico(inputNOmbre.getText());
                     newAcuatico.setDieta(inputDieta.getText());
                     newAcuatico.setDescripcionHabitat(inputDescripcionHabitat.getText());
-                    newAcuatico.setEspecie(inputEspecie.getText());
                     if(esNumeroValido(inputLongitud.getText())||esNumeroValido(inputVidaEzperanza.getText())
                             ||esNumeroValido(inputPeso.getText())||esNumeroValido(inputTemperatura.getText())
                             ||esNumeroValido(inputHuevos.getText())||esNumeroValido(inputNado.getText())
@@ -68,7 +68,19 @@ public class FormsAcuaticos extends JFrame{
                     }else{
                         JOptionPane.showMessageDialog(null,"Recuerde usar 's' o 'n' en casillas indicadas");
                     }
-                    acuaticosController.addReptilAcuatico(newAcuatico);
+                    if ("t".equals(inputEspecie.getText()) ||"c".equals(inputEspecie.getText())){
+                        newAcuatico.setEspecie(inputEspecie.getText());
+                    }else {
+                        JOptionPane.showMessageDialog(null,"Especie solo puede ser 't' o 'c'");
+                    }
+                    int respuesta = JOptionPane.showConfirmDialog(null, "AAA", "Confirmación", JOptionPane.YES_NO_OPTION);
+
+                    if (respuesta == JOptionPane.YES_OPTION) {
+                        acuaticosController.addReptilAcuatico(newAcuatico);
+                    } else if (respuesta == JOptionPane.NO_OPTION) {
+
+                    }
+
                 }
             }
         });
