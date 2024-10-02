@@ -115,6 +115,28 @@ public class Home extends JFrame{
             }
         });
 
+        btnIntercambiar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (estado){
+                    FormsSerpiente viewFormSerpiente = new FormsSerpiente();
+                    viewFormSerpiente.setTitle("Registro Animal");
+                    viewFormSerpiente.setContentPane(viewFormSerpiente.getPanelSerpiente());
+                    viewFormSerpiente.setSize(1000,400);
+                    viewFormSerpiente.setVisible(true);
+                    viewFormSerpiente.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                }else{
+                    FormsAcuaticos vieFromAScuatico = new FormsAcuaticos();
+                    vieFromAScuatico.setTitle("Registro Animal");
+                    vieFromAScuatico.setContentPane(vieFromAScuatico.getPanelAcuatico());
+                    vieFromAScuatico.setSize(1000,400);
+                    vieFromAScuatico.setVisible(true);
+                    vieFromAScuatico.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                }
+            }
+        });
+
+
 
     }
 
