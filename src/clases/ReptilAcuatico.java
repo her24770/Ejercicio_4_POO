@@ -8,7 +8,34 @@ public class ReptilAcuatico extends Reptil{
 
     //MÉTODOS
 
-    public ReptilAcuatico() {
+    /**
+     * Constructor de reptiles acuaticos
+     * @param nombreCientifico nombre cientifico de la serpiente
+     * @param descripcionHabitat cómo es el habitat de la serpiente
+     * @param vidaEsperanza años que vive
+     * @param intercambio fue obtenida por intercambio
+     * @param temperatura grados Celsius de su temperatura corporal
+     * @param huevos promedio de huevos por puesta
+     * @param peso peso de la serpiente (kg)
+     * @param peligroExt se encuentra en peligro de extincion
+     * @param dieta carnivoro, omnivoro, herbivoro
+     * @param longitud largo de la serpiente
+     * @param especie nombre de la especie
+     * @param agua Determina si nada en agua dulce o salada
+     * @param nado Indica la velocidad de nado maxima del reptil
+     * @param buceo Determina en minutos el tiempo que el teptil puede pasar bajo agua sin respirar
+     */
+
+    public ReptilAcuatico(String nombreCientifico, String descripcionHabitat, int vidaEsperanza, boolean intercambio, int temperatura, double huevos, double peso, boolean peligroExt, String dieta, double longitud, String especie, boolean agua, double nado, double buceo) {
+        super(nombreCientifico, descripcionHabitat, vidaEsperanza, intercambio, temperatura, huevos, peso, peligroExt, dieta, longitud);
+        this.especie = especie;
+        this.agua = agua;
+        this.nado = nado;
+        this.buceo = buceo;
+    }
+
+    public ReptilAcuatico(){
+
     }
 
     public String getEspecie() {
@@ -36,5 +63,21 @@ public class ReptilAcuatico extends Reptil{
         this.buceo = buceo;
     }
 
+    public String toString() {
+        return "\nNombre cientifico: " + nombreCientifico +
+                "\nHabitat: " + descripcionHabitat +
+                "\nEsperanza de vida: " + vidaEsperanza +" años" +
+                "\nIntercambio: " + intercambio +
+                "\nTemperatura: " + temperatura + "° C" +
+                "\nProm. huevos/puesta: " + huevos +
+                "\nPeso: " + peso + " kg" +
+                "\nEn peligro: " + peligroExt +
+                "\nDieta: " + dieta +
+                "\nLongitud: " + longitud + " metros" +
+                "\nEspecie: " + especie +
+                "\nAgua: " + agua +
+                "\nVelocidad de Nado: " + nado + " km/h "+
+                "\nTiempo de Buceo: " + buceo + "min";
+    }
 
 }
