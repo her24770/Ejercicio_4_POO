@@ -6,7 +6,6 @@ import controlador.ReptilesAcuaticosController;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Objects;
 
 public class FormsAcuaticos extends JFrame{
     private JPanel panelAcuatico;
@@ -24,6 +23,7 @@ public class FormsAcuaticos extends JFrame{
     private JTextField inputTemperatura;
     private JTextField inputHuevos;
     private JTextField inputPeligroExt;
+    private JTextField inputPresupuesto;
 
     //controller
     ReptilesAcuaticosController acuaticosController = new ReptilesAcuaticosController();
@@ -51,7 +51,7 @@ public class FormsAcuaticos extends JFrame{
                     if(esNumeroValido(inputLongitud.getText())||esNumeroValido(inputVidaEzperanza.getText())
                             ||esNumeroValido(inputPeso.getText())||esNumeroValido(inputTemperatura.getText())
                             ||esNumeroValido(inputHuevos.getText())||esNumeroValido(inputNado.getText())
-                            ||esNumeroValido(inputBuceo.getText())){
+                            ||esNumeroValido(inputBuceo.getText())||esNumeroValido(inputPresupuesto.getText())){
                         newAcuatico.setLongitud(Integer.parseInt(inputLongitud.getText()));
                         newAcuatico.setVidaEsperanza(Integer.parseInt(inputVidaEzperanza.getText()));
                         newAcuatico.setPeso(Integer.parseInt(inputPeso.getText()));
@@ -73,14 +73,35 @@ public class FormsAcuaticos extends JFrame{
                     }else {
                         JOptionPane.showMessageDialog(null,"Especie solo puede ser 't' o 'c'");
                     }
-                    int respuesta = JOptionPane.showConfirmDialog(null, "AAA", "Confirmación", JOptionPane.YES_NO_OPTION);
+                    String recinto = "";
+                    double costomayor=0;
+                    double costoMenor=0;
 
-                    if (respuesta == JOptionPane.YES_OPTION) {
-                        acuaticosController.addReptilAcuatico(newAcuatico);
-                    } else if (respuesta == JOptionPane.NO_OPTION) {
+                        if (newAcuatico.getLongitud() < 100) {
+                            recinto= "Pequeño (1-2 metros cuadrados )";
+                            costoMenor=50+(1000*0.05*0.05*newAcuatico.getPeso());
+                            costomayor=50+(1000*0.05*0.10*newAcuatico.getPeso());
+                        } else if (newAcuatico.getLongitud() >= 100 && newAcuatico.getLongitud() <= 200) {
+                            costoMenor=100+(1000*0.05*0.8*newAcuatico.getPeso());
+                            costomayor=100+(1000*0.05*0.15*newAcuatico.getPeso());
+                            recinto= "Mediano (2-4 metros cuadrados)";
+                        } else {
+                            recinto= "Grande (4-6 metros cuadrados)";
+                            costoMenor=500+(1000*0.05*0.10*newAcuatico.getPeso());
+                            costomayor=500+(1000*0.05*0.20*newAcuatico.getPeso());
+                        }
 
+                    String message="Recinto : "+recinto+"   Costo : Q"+costoMenor+" -  Q"+costomayor;
+                    if(Integer.parseInt(inputPresupuesto.getText())<costoMenor){
+                        JOptionPane.showMessageDialog(null,"El presupuesto no es suficiente para mantener la especie");
+                    }else{
+                        int respuesta = JOptionPane.showConfirmDialog(null, message, "Confirmación", JOptionPane.YES_NO_OPTION);
+                        if (respuesta == JOptionPane.YES_OPTION) {
+                            acuaticosController.addReptilAcuatico(newAcuatico);
+                        } else if (respuesta == JOptionPane.NO_OPTION) {
+
+                        }
                     }
-
                 }
             }
         });

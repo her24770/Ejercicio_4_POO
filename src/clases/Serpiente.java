@@ -159,6 +159,7 @@ public class Serpiente extends Reptil{
                 "\nColor: " + color +
                 "\nVenenosa: " + venenosa +
                 "\nRecinto: " + recinto +
+                "\nCosto Recinto: " + costoMantener+
                 type;
     }
 }

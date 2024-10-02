@@ -106,7 +106,8 @@ public class ReptilAcuatico extends Reptil{
                 "\nAgua: " + agua +
                 "\nVelocidad de Nado: " + nado + " km/h "+
                 "\nTiempo de Buceo: " + buceo + "min"+
-                "\nRecinto: " + recinto;
+                "\nRecinto: " + recinto+
+                "\nCosto Recinto: " + costoMantener;
     }
 
 }
