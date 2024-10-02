@@ -1,4 +1,4 @@
-import Controlador.*;
+import controlador.*;
 import clases.*;
 import vistas.Home;
 

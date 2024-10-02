@@ -1,4 +1,4 @@
-package Controlador;
+package controlador;
 import clases.*;
 
 import java.io.*;
@@ -133,9 +133,7 @@ public class ReptilesAcuaticosController {
 
     public void intercambio(){
 
-        if (ReptilAcuatico().equals(intercambiado)){
-            //Aqui se agrega
-        }
+
 
 
     }

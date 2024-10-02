@@ -20,16 +20,19 @@ public class Home extends JFrame{
     private JButton btnAcuatico;
     private JButton btnAgregar;
     private JLabel labelDetallesAnial;
+    private JTextArea textAreaInformacion;
 
     //variables
     private boolean estado = true;
+    DefaultListModel<String> listModel = new DefaultListModel<>();
+    int indexListAnimales = listAnimales.getSelectedIndex();
 
     //Listas
     List<Serpiente> serpientesList = new ArrayList<>();
-    List<ReptilAcuatico> reptilesAcuaticosList = new ArrayList<>();
+    List<ReptilAcuatico> acuaticosList = new ArrayList<>();
     //controllers
     SerpientesController serpientesController = new SerpientesController();
-
+    ReptilesAcuaticosController acuaticosController = new ReptilesAcuaticosController();
 
     public JPanel getPanelHome() {
         return panelHome;
@@ -41,8 +44,9 @@ public class Home extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 estado=true;
+                indexListAnimales=-1;
                 serpientesList=serpientesController.listSerpientes();
-                DefaultListModel<String> listModel = new DefaultListModel<>();
+                listModel.clear();
                 for(Serpiente serpiente : serpientesList){
                     listModel.addElement(serpiente.getNombreCientifico());
                 }
@@ -53,11 +57,13 @@ public class Home extends JFrame{
         listAnimales.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
-                int index = listAnimales.getSelectedIndex();
-                if (estado){
-                    labelDetallesAnial.setText(serpientesList.get(index).toString());
-                }else{
-
+                indexListAnimales=listAnimales.getSelectedIndex();
+                if (indexListAnimales!=-1){
+                    if (estado){
+                        textAreaInformacion.setText(serpientesList.get(indexListAnimales).toString());
+                    }else{
+                        textAreaInformacion.setText(acuaticosList.get(indexListAnimales).toString());
+                    }
                 }
             }
         });
@@ -66,10 +72,11 @@ public class Home extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 estado=false;
-                serpientesList=serpientesController.listSerpientes();
-                DefaultListModel<String> listModel = new DefaultListModel<>();
-                for(Serpiente serpiente : serpientesList){
-                    listModel.addElement(serpiente.getNombreCientifico());
+                indexListAnimales=-1;
+                listModel.clear();
+                acuaticosList=acuaticosController.listReptilesAcuaticos();
+                for(ReptilAcuatico retiilAcuatico : acuaticosList){
+                    listModel.addElement(retiilAcuatico.getNombreCientifico());
                 }
                 listAnimales.setModel(listModel);
             }
@@ -84,7 +91,7 @@ public class Home extends JFrame{
                 viewFormSerpiente.setContentPane(viewFormSerpiente.getPanelSerpiente());
                 viewFormSerpiente.setSize(1000,400);
                 viewFormSerpiente.setVisible(true);
-                viewFormSerpiente.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                viewFormSerpiente.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             }
         });
 

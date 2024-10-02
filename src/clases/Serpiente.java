@@ -9,6 +9,12 @@ public class Serpiente extends Reptil{
     //Metodos
 
     /**
+     * Constructor serpientes
+     */
+    public Serpiente(){
+
+    }
+    /**
      * Constructor para serpientes venenosas
      * @param nombreCientifico nombre cientifico de la serpiente
      * @param descripcionHabitat cómo es el habitat de la serpiente
@@ -25,6 +31,7 @@ public class Serpiente extends Reptil{
      * @param venenosa determina si es venenosa
      * @param tipoVeneno clase de veneno: neutoxico o hemotoxico
      */
+
     public Serpiente(String nombreCientifico, String descripcionHabitat, int vidaEsperanza, boolean intercambio, int temperatura, double huevos, double peso, boolean peligroExt, String dieta, double longitud, String especie, String color, boolean venenosa, boolean tipoVeneno) {
         super(nombreCientifico, descripcionHabitat, vidaEsperanza, intercambio, temperatura, huevos, peso, peligroExt, dieta, longitud);
         this.especie = especie;

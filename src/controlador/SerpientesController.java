@@ -53,7 +53,7 @@ public class SerpientesController {
     }
 
     public void addSerpiente(Serpiente newSerpiente){
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter("reptilesSerpientesBD", true))){
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("src/bd/reptilesSerpientesBD.csv", true))){
             //Volver atributos en String
             String nuevaLinea = newSerpiente.getNombreCientifico() + "," +
                                 newSerpiente.getDescripcionHabitat() + "," +
