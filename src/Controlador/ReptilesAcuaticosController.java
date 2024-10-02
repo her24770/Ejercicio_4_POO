@@ -5,8 +5,14 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Controlador para las funciones de Reptiles Acuaticos
+ */
 public class ReptilesAcuaticosController {
-
+    /**
+     * Recorre el csv y regresa una lista con los objetos guardados
+     * @return lista de todos los reptiles acuaticos
+     */
     public List<ReptilAcuatico> listReptilesAcuaticos(){
         List<ReptilAcuatico> reptilesAcuaticos = new ArrayList<>();
 
@@ -48,6 +54,10 @@ public class ReptilesAcuaticosController {
         return reptilesAcuaticos;
     }
 
+    /**
+     * Agrega un nuevo individuo al csv de reptiles acuaticos
+     * @param newReptilAcuatico reptil acuatico a agregar
+     */
     public void addReptilAcuatico(ReptilAcuatico newReptilAcuatico){
         try (BufferedWriter bw = new BufferedWriter(new FileWriter("src/bd/reptilesAcuaticosBD.csv", true))){
             //Volver atributos en String
@@ -73,6 +83,10 @@ public class ReptilesAcuaticosController {
         }
     }
 
+    /**
+     * Muestra todos los individuos obtenidos por intercambio
+     * @return lista con los animales intercambiados
+     */
     public List<ReptilAcuatico> historialReptilesAcuaticos(){
         List<ReptilAcuatico> allreptilesAcuaticos = listReptilesAcuaticos();
         List<ReptilAcuatico> intercambiados = new ArrayList<>();
@@ -84,58 +98,76 @@ public class ReptilesAcuaticosController {
         }
         return intercambiados;
     }
+     /**
+     * Agrega un nuevo individuo a cambio de eliminar uno existente
+     * @param allReptilesAcuaticos todas las serpientes existentes
+     * @param egreso serpiente que egresada
+     * @param ingreso serpiente ingresada
+     * @return mensaje de error en caso de fallar
+     */
+    public String intercambio(List<ReptilAcuatico>allReptilesAcuaticos, ReptilAcuatico egreso, ReptilAcuatico ingreso){
+        String msg = "";
+        List<String[]> nuevoCSV = new ArrayList<>();
+        for(ReptilAcuatico reptilAcuatico: allReptilesAcuaticos){
+            if(reptilAcuatico.toString().equals(egreso.toString())){
+                int fila = allReptilesAcuaticos.indexOf(reptilAcuatico)+1;
 
-    public void updateReptilAcuatico(ReptilAcuatico updateReptilAcuatico, int filaAEditar){
-        // Leer todas las filas del archivo CSV
-        List<String[]> rows = new ArrayList<>();
+                allReptilesAcuaticos.set(fila-1, ingreso);
 
-        try (BufferedReader br = new BufferedReader(new FileReader("reptilesAcuaticosBD.csv"))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                // Dividir cada línea por comas
-                String[] data = line.split(",");
-                rows.add(data);
+                System.out.println(allReptilesAcuaticos);
+
+                String nuevaFila =
+                        ingreso.getNombreCientifico()+","+
+                                ingreso.getDescripcionHabitat()+","+
+                                Integer.toString(ingreso.getVidaEsperanza())+","+
+                                Boolean.toString(ingreso.getIntercambio())+","+
+                                Integer.toString(ingreso.getTemperatura())+","+
+                                Double.toString(ingreso.getHuevos())+","+
+                                Double.toString(ingreso.getPeso())+","+
+                                Boolean.toString(ingreso.getPeligroExt())+","+
+                                ingreso.getDieta()+","+
+                                Double.toString(ingreso.getLongitud())+","+
+                                ingreso.getEspecie()+","+
+                                Boolean.toString(ingreso.getAgua())+","+
+                                Double.toString(ingreso.getNado())+","+
+                                Double.toString(ingreso.getBuceo())
+                        ;
+
+                List<String[]> rows = new ArrayList<>();
+                try (BufferedReader br = new BufferedReader(new FileReader("src/bd/reptilesAcuaticosBD.csv"))) {
+                    String line;
+                    while ((line = br.readLine()) != null) {
+                        // Dividir cada línea por comas
+                        String[] data = line.split(",");
+                        rows.add(data);
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                // Guardar los cambios escribiendo el archivo CSV de nuevo
+                try (BufferedWriter bw = new BufferedWriter(new FileWriter("src/bd/reptilesAcuaticosBD.csv"))) {
+                    for (String[] row : rows) {
+                        if(rows.indexOf(row) == fila){
+                            bw.write(nuevaFila);
+                            bw.newLine();
+                        }
+                        else{
+                            bw.write(String.join(",", row));
+                            bw.newLine();
+                        }
+
+                    }
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        if (rows.size() > filaAEditar) {
-            // Nueva fila que queremos poner en su lugar
-            String[] nuevaFila = {updateReptilAcuatico.getNombreCientifico(),
-                    updateReptilAcuatico.getDescripcionHabitat(),
-                    Integer.toString(updateReptilAcuatico.getVidaEsperanza()),
-                    Boolean.toString(updateReptilAcuatico.getIntercambio()),
-                    Integer.toString(updateReptilAcuatico.getTemperatura()),
-                    Double.toString(updateReptilAcuatico.getHuevos()),
-                    Double.toString(updateReptilAcuatico.getPeso()),
-                    Boolean.toString(updateReptilAcuatico.getPeligroExt()),
-                    updateReptilAcuatico.getDieta(),
-                    Double.toString(updateReptilAcuatico.getLongitud()),
-                    updateReptilAcuatico.getEspecie(),
-                    Boolean.toString(updateReptilAcuatico.getAgua()),
-                    Double.toString(updateReptilAcuatico.getNado()),
-                    Double.toString(updateReptilAcuatico.getBuceo()),
-            };
-            rows.set(filaAEditar, nuevaFila);  // Reemplazar la fila existente con la nueva fila
-        }
-
-        // Guardar los cambios escribiendo el archivo CSV de nuevo
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter("reptilesAcuaticosBD.csv"))) {
-            for (String[] row : rows) {
-                bw.write(String.join(",", row));
-                bw.newLine();
+            else{
+                msg = "Este animal no se encuentra dentro de nuestro inventario.";
             }
-        } catch (IOException e) {
-            e.printStackTrace();
         }
-
+        return msg;
     }
-
-    public void intercambio(){
-
-
-
-
-    }
-
 }
