@@ -5,8 +5,14 @@ import vistas.Home;
 import javax.swing.*;
 import java.util.List;
 
-
+/**
+ * Programa taxonomico para intercambio de animales e ingreso de los individuos existentes al zoologico La Aurora
+ * @author Gabriel hidalgo 24939, Josue hernandez 24770, Juan Ordoñez 24979
+ * Fecha de inicio: 27-09-2024
+ * Ultima edicion: 01-10-2024
+ */
 public class Main {
+    //Levantamiento de vista
     public static void main(String[] args) {
         Home viewHome = new Home();
         viewHome.setTitle("Registro Animal");
@@ -14,33 +20,6 @@ public class Main {
         viewHome.setSize(1000,400);
         viewHome.setVisible(true);
         viewHome.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-
-        //PRUEBA PARA METODOS DE SERPIENTES
-//        controlador.SerpientesController serpienteC = new controlador.SerpientesController();
-//        List<Serpiente> serpientes = serpienteC.listSerpientes();
-//        List<Serpiente> historialS = serpienteC.historialSerpientes();
-//
-//        System.out.println("popo");
-//        for (Serpiente serpiente : historialS){
-//            System.out.print(serpiente.toString());
-//        }
-
-
-
-        //PRUEBA PARA METODOS DE REPTILES ACUATICOS
-
-        ReptilesAcuaticosController reptilAcuaticoC = new ReptilesAcuaticosController();
-        ReptilAcuatico newReptilAcuatico = new ReptilAcuatico("Skibidi Pomni", "Acuatico", 34, false, 78, 3, 34, true, "caca seca", 34, "Toilet", false, 45, 98);
-        reptilAcuaticoC.addReptilAcuatico(newReptilAcuatico);
-
-        List<ReptilAcuatico> reptilesAcuaticos = reptilAcuaticoC.listReptilesAcuaticos();
-        List<ReptilAcuatico> historialA = reptilAcuaticoC.historialReptilesAcuaticos();
-
-        System.out.println("ICKKCK");
-        for (ReptilAcuatico reptilAcuatico : historialA){
-            System.out.print(reptilAcuatico.toString());
-        }
 
     }
 

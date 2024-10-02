@@ -119,6 +119,9 @@ public class Serpiente extends Reptil{
         return tipoVeneno;
     }
 
+    /**
+     * @return informacion de la serpiente
+     */
     public String toString() {
         int costoMantener=0;
         String recinto = "";
