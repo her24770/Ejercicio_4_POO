@@ -34,6 +34,9 @@ public class ReptilAcuatico extends Reptil{
         this.buceo = buceo;
     }
 
+    /**
+     * Constructor vacio Reptil Acuatico
+     */
     public ReptilAcuatico(){
 
     }
@@ -63,6 +66,9 @@ public class ReptilAcuatico extends Reptil{
         this.buceo = buceo;
     }
 
+    /**
+     * @return informacion del Reptil Acuatico
+     */
     public String toString() {
         String recinto = "";
         int costoMantener=0;
