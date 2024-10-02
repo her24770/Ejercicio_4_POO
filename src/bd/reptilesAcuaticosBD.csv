@@ -1,6 +1,6 @@
 nombreCientifico, descripcionHabitat, vidaEsperanza, intercambio, temperatura, huevos, peso, peligroExt, dieta, longitud, especie, agua, nado, buceo
 Skibidi Sigma1, Acuatico, 34, false, 78, 3, 34, true, azul, 34, Toilet, false, 45, 98
 Skibidi Sigma2, Acuatico, 34, false, 78, 3, 34, true, azul, 34, Toilet, false, 45, 98
-Skibidi Sigma3, Acuatico, 34, false, 78, 3, 34, true, azul, 34, Toilet, false, 45, 98
+Skibidi Sigma3, Acuatico, 34, true, 78, 3, 34, true, azul, 34, Toilet, false, 45, 98
 Skibidi Sigma4, Acuatico, 34, false, 78, 3, 34, true, azul, 34, Toilet, false, 45, 98
-qq,q,1,false,1,1.0,45.0,true,q,1.0,t,false,0.0,0.0
+qq,q,1,true,1,1.0,45.0,true,q,1.0,t,false,0.0,0.0

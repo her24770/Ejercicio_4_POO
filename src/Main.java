@@ -1,9 +1,7 @@
-import controlador.*;
-import clases.*;
+
 import vistas.Home;
 
 import javax.swing.*;
-import java.util.List;
 
 /**
  * Programa taxonomico para intercambio de animales e ingreso de los individuos existentes al zoologico La Aurora
