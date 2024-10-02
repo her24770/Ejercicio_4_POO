@@ -67,7 +67,6 @@ public class FormsSerpiente extends JFrame{
                    }else{
                        JOptionPane.showMessageDialog(null,"Recuerde usar 's' o 'n' en casillas indicadas");
                    }
-                    System.out.println(newSerpiente);
                    serpientesController.addSerpiente(newSerpiente);
                }
            }

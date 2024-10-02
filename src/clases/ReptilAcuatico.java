@@ -2,7 +2,7 @@ package clases;
 
 public class ReptilAcuatico extends Reptil{
     private String especie;
-    private Boolean agua;
+    private boolean agua;
     private double nado;
     private double buceo;
 
