@@ -6,139 +6,79 @@ import controlador.*;
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Home extends JFrame{
+public class Home extends JFrame {
     private JPanel panelHome;
-    private JList listAnimales;
+    private JList<String> jlistAnimales;
     private JButton btnHistorial;
     private JButton btnIntercambiar;
-    private JButton btnserpiente;
-    private JButton btnAcuatico;
     private JButton btnAgregar;
     private JLabel labelDetallesAnial;
     private JTextArea textAreaInformacion;
-    private JList list1;
+    private JList JListerFilterEspecie;
 
-    //variables
-    private boolean estado = true;
-    DefaultListModel<String> listModel = new DefaultListModel<>();
-    int indexListAnimales = listAnimales.getSelectedIndex();
+    // Variables
+    private DefaultListModel<String> modelo;
 
-    //Listas
-    List<Serpiente> serpientesList = new ArrayList<>();
-    List<ReptilAcuatico> acuaticosList = new ArrayList<>();
-    //controllers
+    // Controllers
     SerpientesController serpientesController = new SerpientesController();
     ReptilesAcuaticosController acuaticosController = new ReptilesAcuaticosController();
+
+    // Listas
+    List<Animal> animalesList = new ArrayList<>();
+
+    public void setAnimalesList(List<Animal> animalesList) {
+        this.animalesList = animalesList;
+    }
 
     public JPanel getPanelHome() {
         return panelHome;
     }
 
-
     public Home() {
-        btnserpiente.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                estado=true;
-                indexListAnimales=-1;
-                serpientesList=serpientesController.listSerpientes();
-                listModel.clear();
-                for(Serpiente serpiente : serpientesList){
-                    listModel.addElement(serpiente.getNombreCientifico());
-                }
-                listAnimales.setModel(listModel);
-            }
-        });
+        addJListAnimales("all");
 
-        listAnimales.addListSelectionListener(new ListSelectionListener() {
+
+        JListerFilterEspecie.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
-                indexListAnimales=listAnimales.getSelectedIndex();
-                if (indexListAnimales!=-1){
-                    if (estado){
-                        textAreaInformacion.setText(serpientesList.get(indexListAnimales).toString());
-                    }else{
-                        textAreaInformacion.setText(acuaticosList.get(indexListAnimales).toString());
-                    }
-                }
-            }
-        });
-
-        btnAcuatico.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                estado=false;
-                indexListAnimales=-1;
-                listModel.clear();
-                acuaticosList=acuaticosController.listReptilesAcuaticos();
-                for(ReptilAcuatico retiilAcuatico : acuaticosList){
-                    listModel.addElement(retiilAcuatico.getNombreCientifico());
-                }
-                listAnimales.setModel(listModel);
-            }
-        });
-
-        btnAgregar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (estado){
-                    FormsSerpiente viewFormSerpiente = new FormsSerpiente();
-                    viewFormSerpiente.setTitle("Registro Animal");
-                    viewFormSerpiente.setContentPane(viewFormSerpiente.getPanelSerpiente());
-                    viewFormSerpiente.setSize(1000,400);
-                    viewFormSerpiente.setVisible(true);
-                    viewFormSerpiente.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                if(JListerFilterEspecie.getSelectedIndex()==1){
+                    addJListAnimales("serpientes");
+                }else if (JListerFilterEspecie.getSelectedIndex()==2){
+                    addJListAnimales("acuaticos");
                 }else{
-                    FormsAcuaticos vieFromAScuatico = new FormsAcuaticos();
-                    vieFromAScuatico.setTitle("Registro Animal");
-                    vieFromAScuatico.setContentPane(vieFromAScuatico.getPanelAcuatico());
-                    vieFromAScuatico.setSize(1000,400);
-                    vieFromAScuatico.setVisible(true);
-                    vieFromAScuatico.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                }
-            }
-        });
-
-        btnHistorial.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Historial viewHistorial = new Historial();
-                viewHistorial.setTitle("Registro Animal");
-                viewHistorial.setContentPane(viewHistorial.getPanelHitorial());
-                viewHistorial.setSize(500,400);
-                viewHistorial.setVisible(true);
-                viewHistorial.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            }
-        });
-
-        btnIntercambiar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (estado){
-                    FormsSerpiente viewFormSerpiente = new FormsSerpiente();
-                    viewFormSerpiente.setTitle("Registro Animal");
-                    viewFormSerpiente.setContentPane(viewFormSerpiente.getPanelSerpiente());
-                    viewFormSerpiente.setSize(1000,400);
-                    viewFormSerpiente.setVisible(true);
-                    viewFormSerpiente.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                }else{
-                    FormsAcuaticos vieFromAScuatico = new FormsAcuaticos();
-                    vieFromAScuatico.setTitle("Registro Animal");
-                    vieFromAScuatico.setContentPane(vieFromAScuatico.getPanelAcuatico());
-                    vieFromAScuatico.setSize(1000,400);
-                    vieFromAScuatico.setVisible(true);
-                    vieFromAScuatico.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    addJListAnimales("all");
                 }
             }
         });
 
 
+        jlistAnimales.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                textAreaInformacion.setText(animalesList.get(jlistAnimales.getSelectedIndex()).toString());
+
+            }
+        });
 
     }
 
+    private void addJListAnimales(String filter) {
+        modelo = new DefaultListModel<>();
+        animalesList=new ArrayList<>();
+        if(filter=="serpientes"){
+            animalesList.addAll(serpientesController.listSerpientes());
+        }else if (filter=="acuaticos"){
+            animalesList.addAll(acuaticosController.listReptilesAcuaticos());
+        }else{
+            animalesList.addAll(acuaticosController.listReptilesAcuaticos());
+            animalesList.addAll(serpientesController.listSerpientes());
+        }
+        for(Animal animal : animalesList) {
+            modelo.addElement(animal.getNombreCientifico());
+        }
+        jlistAnimales.setModel(modelo);
+    }
 }

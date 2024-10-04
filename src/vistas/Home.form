@@ -63,7 +63,7 @@
                   <text value="ANIMALES"/>
                 </properties>
               </component>
-              <component id="f5859" class="javax.swing.JList" binding="listAnimales">
+              <component id="f5859" class="javax.swing.JList" binding="jlistAnimales">
                 <constraints>
                   <grid row="2" column="0" row-span="1" col-span="3" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="50"/>
@@ -71,29 +71,19 @@
                 </constraints>
                 <properties/>
               </component>
-              <component id="877e3" class="javax.swing.JButton" binding="btnserpiente">
-                <constraints>
-                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <text value="Serpientes"/>
-                </properties>
-              </component>
-              <component id="b49c3" class="javax.swing.JButton" binding="btnAcuatico">
-                <constraints>
-                  <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <text value="Acuaticos"/>
-                </properties>
-              </component>
-              <component id="7b899" class="javax.swing.JList" binding="list1" default-binding="true">
+              <component id="7b899" class="javax.swing.JList" binding="JListerFilterEspecie">
                 <constraints>
                   <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="50"/>
                   </grid>
                 </constraints>
-                <properties/>
+                <properties>
+                  <model>
+                    <item value="Todos"/>
+                    <item value="Serpientes"/>
+                    <item value="Reptiles Acuaticos"/>
+                  </model>
+                </properties>
               </component>
             </children>
           </grid>
