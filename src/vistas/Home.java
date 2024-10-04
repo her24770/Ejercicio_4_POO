@@ -21,6 +21,7 @@ public class Home extends JFrame{
     private JButton btnAgregar;
     private JLabel labelDetallesAnial;
     private JTextArea textAreaInformacion;
+    private JList list1;
 
     //variables
     private boolean estado = true;

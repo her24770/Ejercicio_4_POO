@@ -1,6 +1,5 @@
 
 import vistas.Home;
-
 import javax.swing.*;
 
 /**
@@ -18,7 +17,5 @@ public class Main {
         viewHome.setSize(1000,400);
         viewHome.setVisible(true);
         viewHome.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
     }
-
 }
