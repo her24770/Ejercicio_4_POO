@@ -198,8 +198,14 @@ public class ReptilesAcuaticosController {
 //
         List<ReptilAcuatico> allReptilesAcuaticos = listReptilesAcuaticos();
         List<String[]> nuevoCSV = new ArrayList<>();
+        boolean esPrimeraLinea = true;
         for (ReptilAcuatico reptilAcuatico : allReptilesAcuaticos) {
             if (reptilAcuatico.toString().equals(reptilEliminar.toString())) {
+                // Saltar la primera línea que contiene encabezados
+                if (esPrimeraLinea) {
+                    esPrimeraLinea = false;
+                    continue;
+                }
                 int fila = allReptilesAcuaticos.indexOf(reptilAcuatico) + 1;
 
                 allReptilesAcuaticos.remove(fila -1);
