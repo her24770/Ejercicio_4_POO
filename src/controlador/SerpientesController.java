@@ -106,14 +106,17 @@ public class SerpientesController {
 
     /**
      * Agrega un nuevo individuo a cambio de eliminar uno existente
-     * @param allSerpientes todas las serpientes existentes
      * @param egreso serpiente que egresada
      * @param ingreso serpiente ingresada
      * @return mensaje de error en caso de fallar
      */
-    public String intercambio(List<Serpiente>allSerpientes, Serpiente egreso, Serpiente ingreso){
+    public String intercambio(Serpiente egreso, Serpiente ingreso){
         String msg = "";
+
+        List<Serpiente> allSerpientes = listSerpientes();
+
         List<String[]> nuevoCSV = new ArrayList<>();
+
         for(Serpiente serpiente: allSerpientes){
             if(serpiente.toString().equals(egreso.toString())){
                 int fila = allSerpientes.indexOf(serpiente)+1;

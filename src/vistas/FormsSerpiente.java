@@ -111,7 +111,7 @@ public class FormsSerpiente extends JFrame{
                            int respuesta = JOptionPane.showConfirmDialog(null, message, "Confirmación", JOptionPane.YES_NO_OPTION);
                            if (respuesta == JOptionPane.YES_OPTION) {
                                List<Serpiente> listSerpientes = serpientesController.listSerpientes();
-                               serpientesController.intercambio(listSerpientes,serpiente,newSerpiente);
+                               serpientesController.intercambio(serpiente,newSerpiente);
                            } else if (respuesta == JOptionPane.NO_OPTION) {
 
                            }
