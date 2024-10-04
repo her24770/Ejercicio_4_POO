@@ -76,8 +76,8 @@ public class Home extends JFrame {
         jlistAnimales.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
-                selectedAnimal=animalesList.get(jlistAnimales.getSelectedIndex());
                 if(jlistAnimales.getSelectedIndex()>=0){
+                    selectedAnimal=animalesList.get(jlistAnimales.getSelectedIndex());
                     textAreaInformacion.setText(animalesList.get(jlistAnimales.getSelectedIndex()).toString());
                 }else{
                     textAreaInformacion.setText("");
@@ -213,6 +213,7 @@ public class Home extends JFrame {
 
                     }else if (estadoEspecie=="acuaticos"){
                         acuaticosController.eliminar((ReptilAcuatico) animalSelected);
+                        System.out.println(animalSelected.toString());
                     }
                 }else {
                     JOptionPane.showMessageDialog(null,"Debe elegir una especie para editar");
@@ -248,4 +249,7 @@ public class Home extends JFrame {
             return false;
         }
     }
+
+
+
 }
