@@ -100,13 +100,14 @@ public class ReptilesAcuaticosController {
     }
      /**
      * Agrega un nuevo individuo a cambio de eliminar uno existente
-     * @param allReptilesAcuaticos todas las serpientes existentes
      * @param egreso serpiente que egresada
      * @param ingreso serpiente ingresada
      * @return mensaje de error en caso de fallar
      */
-    public String intercambio(List<ReptilAcuatico>allReptilesAcuaticos, ReptilAcuatico egreso, ReptilAcuatico ingreso){
+    public String intercambio(ReptilAcuatico egreso, ReptilAcuatico ingreso){
         String msg = "";
+
+        List<ReptilAcuatico> allReptilesAcuaticos = listReptilesAcuaticos();
         List<String[]> nuevoCSV = new ArrayList<>();
         for(ReptilAcuatico reptilAcuatico: allReptilesAcuaticos){
             if(reptilAcuatico.toString().equals(egreso.toString())){
@@ -169,5 +170,25 @@ public class ReptilesAcuaticosController {
             }
         }
         return msg;
+    }
+
+    public double[] presupuesto(ReptilAcuatico newReptilAcuatico){
+        double costoMenor;
+        double costoMayor;
+
+        if (newReptilAcuatico.getLongitud() < 100) {
+            //Recinto pequeño 1-2 metros cuadrados
+            costoMenor=0;
+            costoMayor=0;
+        } else if (newReptilAcuatico.getLongitud() >= 100 && newReptilAcuatico.getLongitud() <= 200) {
+            //Recinto mediano 2-4 metros cuadrados
+            costoMenor=100+(1000*0.05*0.8*newReptilAcuatico.getPeso());
+            costoMayor=100+(1000*0.05*0.15*newReptilAcuatico.getPeso());
+        } else {
+            //Recinto grande 4-6 metros cuadrados
+            costoMenor=500+(1000*0.05*0.10*newReptilAcuatico.getPeso());
+            costoMayor=500+(1000*0.05*0.20*newReptilAcuatico.getPeso());
+        }
+        return new double[] {costoMenor, costoMayor};
     }
 }
