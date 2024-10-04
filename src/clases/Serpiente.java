@@ -122,6 +122,7 @@ public class Serpiente extends Reptil{
     /**
      * @return informacion de la serpiente
      */
+    @Override
     public String toString() {
         int costoMantener=0;
         String recinto = "";
