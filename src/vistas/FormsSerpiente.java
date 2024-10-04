@@ -43,6 +43,21 @@ public class FormsSerpiente extends JFrame{
 
     public void setSerpiente(Serpiente serpiente) {
         this.serpiente = serpiente;
+        if(serpiente!=null){
+            inputNOmbre.setText(serpiente.getNombreCientifico());
+            inputDieta.setText(serpiente.getDieta());
+            inputDescripcionHabitat.setText(serpiente.getDescripcionHabitat());
+            inputVidaEzperanza.setText(Integer.toString(serpiente.getVidaEsperanza()));
+            inputPeso.setText(Double.toString(serpiente.getPeso()));
+            inputTemperatura.setText(Integer.toString(serpiente.getTemperatura()));
+            inputHuevos.setText(Double.toString(serpiente.getHuevos()));
+            inputPeligroExt.setText(convertirBooleanoAString(serpiente.getPeligroExt()));
+            inputLongitud.setText(Double.toString(serpiente.getLongitud()));
+            inputEspecie.setText(serpiente.getEspecie());
+            inputCOlor.setText(serpiente.getColor());
+            inputTipoVeneno.setText(convertirBooleanoAString(serpiente.getTipoVeneno()));
+            inputVenenosa.setText(convertirBooleanoAString(serpiente.getVenenosa()));
+        }
     }
 
     //Controlador
@@ -51,8 +66,7 @@ public class FormsSerpiente extends JFrame{
 
     public FormsSerpiente(){
         serpiente=(Serpiente) viewHome.getSelectedAnimal();
-        System.out.println(serpiente);
-        llenarinputs(serpiente);
+        //llenarinputs(serpiente);
 
 
         btnaddSerpiente.addActionListener(new ActionListener() {
@@ -157,22 +171,6 @@ public class FormsSerpiente extends JFrame{
         } else {
             return "n";  // Si es false, retorna "n"
         }
-    }
-
-    public void llenarinputs(Serpiente serpienteiew){
-        inputNOmbre.setText(serpienteiew.getNombreCientifico());
-        inputDieta.setText(serpienteiew.getDieta());
-        inputDescripcionHabitat.setText(serpienteiew.getDescripcionHabitat());
-        inputVidaEzperanza.setText(Integer.toString(serpienteiew.getVidaEsperanza()));
-        inputPeso.setText(Double.toString(serpienteiew.getPeso()));
-        inputTemperatura.setText(Integer.toString(serpienteiew.getTemperatura()));
-        inputHuevos.setText(Double.toString(serpienteiew.getHuevos()));
-        inputPeligroExt.setText(convertirBooleanoAString(serpienteiew.getPeligroExt()));
-        inputLongitud.setText(Double.toString(serpienteiew.getLongitud()));
-        inputEspecie.setText(serpienteiew.getEspecie());
-        inputCOlor.setText(serpienteiew.getColor());
-        inputTipoVeneno.setText(convertirBooleanoAString(serpienteiew.getTipoVeneno()));
-        inputVenenosa.setText(convertirBooleanoAString(serpienteiew.getVenenosa()));
     }
 
 
