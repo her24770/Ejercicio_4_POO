@@ -21,7 +21,7 @@ public class Home extends JFrame {
     private JTextArea textAreaInformacion;
     private JList JListerFilterEspecie;
     private JButton btnEditar;
-    private JButton eliminarButton;
+    private JButton btnEliminar;
     private JButton btnPresupuesto;
 
     // Variables
@@ -194,6 +194,25 @@ public class Home extends JFrame {
                         vieFromAScuatico.setSize(1000,400);
                         vieFromAScuatico.setVisible(true);
                         vieFromAScuatico.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    }
+                }else {
+                    JOptionPane.showMessageDialog(null,"Debe elegir una especie para editar");
+                }
+
+            }
+        });
+
+
+        btnEliminar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (jlistAnimales.getSelectedIndex()>=0){
+                    Animal animalSelected =  animalesList.get(jlistAnimales.getSelectedIndex());
+
+                    if (estadoEspecie=="serpientes"){
+
+                    }else if (estadoEspecie=="acuaticos"){
+                        acuaticosController.eliminar((ReptilAcuatico) animalSelected);
                     }
                 }else {
                     JOptionPane.showMessageDialog(null,"Debe elegir una especie para editar");
