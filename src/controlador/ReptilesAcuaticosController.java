@@ -197,13 +197,20 @@ public class ReptilesAcuaticosController {
     public void eliminar(ReptilAcuatico reptilEliminar) {
         // Lista para almacenar las filas del CSV excepto la del reptil a eliminar
         List<String[]> rows = new ArrayList<>();
+        boolean esPrimeraLinea = true;
 
         // Leer el archivo CSV y almacenar solo las filas que no coinciden con el reptil a eliminar
         try (BufferedReader br = new BufferedReader(new FileReader("src/bd/reptilesAcuaticosBD.csv"))) {
             String line;
             while ((line = br.readLine()) != null) {
+                // Saltar la primera línea que contiene encabezados
+                if (esPrimeraLinea) {
+                    esPrimeraLinea = false;
+                    continue;
+                }
                 String[] data = line.split(",");
                 System.out.println(data[2]);
+
 
                 // Crear un objeto temporal para verificar la igualdad
                 ReptilAcuatico reptil = new ReptilAcuatico(data[0], data[1], Integer.parseInt(data[2]),
