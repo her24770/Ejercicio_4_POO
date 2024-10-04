@@ -195,48 +195,96 @@ public class ReptilesAcuaticosController {
     }
 
     public void eliminar(ReptilAcuatico reptilEliminar) {
-        // Lista para almacenar las filas del CSV excepto la del reptil a eliminar
-        List<String[]> rows = new ArrayList<>();
+//
+        List<ReptilAcuatico> allReptilesAcuaticos = listReptilesAcuaticos();
+        List<String[]> nuevoCSV = new ArrayList<>();
         boolean esPrimeraLinea = true;
-
-        // Leer el archivo CSV y almacenar solo las filas que no coinciden con el reptil a eliminar
-        try (BufferedReader br = new BufferedReader(new FileReader("src/bd/reptilesAcuaticosBD.csv"))) {
-            String line;
-            while ((line = br.readLine()) != null) {
+        for (ReptilAcuatico reptilAcuatico : allReptilesAcuaticos) {
+            if (reptilAcuatico.toString().equals(reptilEliminar.toString())) {
                 // Saltar la primera línea que contiene encabezados
                 if (esPrimeraLinea) {
                     esPrimeraLinea = false;
                     continue;
                 }
-                String[] data = line.split(",");
-                System.out.println(data[2]);
+                int fila = allReptilesAcuaticos.indexOf(reptilAcuatico) + 1;
+
+                allReptilesAcuaticos.remove(fila -1);
 
 
-                // Crear un objeto temporal para verificar la igualdad
-                ReptilAcuatico reptil = new ReptilAcuatico(data[0], data[1], Integer.parseInt(data[2]),
-                        Boolean.parseBoolean(data[3]), Integer.parseInt(data[4]), Double.parseDouble(data[5]),
-                        Double.parseDouble(data[6]), Boolean.parseBoolean(data[7]), data[8],
-                        Double.parseDouble(data[9]), data[10], Boolean.parseBoolean(data[11]),
-                        Double.parseDouble(data[12]), Double.parseDouble(data[13]));
-
-                // Añadir a la lista solo si el objeto no es el que queremos eliminar
-                if (!reptil.equals(reptilEliminar)) {
-                    rows.add(data);
+                List<String[]> rows = new ArrayList<>();
+                try (BufferedReader br = new BufferedReader(new FileReader("src/bd/reptilesAcuaticosBD.csv"))) {
+                    String line;
+                    while ((line = br.readLine()) != null) {
+                        // Dividir cada línea por comas
+                        String[] data = line.split(",");
+                        rows.add(data);
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
-        // Sobreescribir el archivo CSV con los datos de 'rows' para excluir el reptil eliminado
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter("src/bd/reptilesAcuaticosBD.csv"))) {
-            for (String[] row : rows) {
-                bw.write(String.join(",", row));
-                bw.newLine();
+                // Guardar los cambios escribiendo el archivo CSV de nuevo
+                try (BufferedWriter bw = new BufferedWriter(new FileWriter("src/bd/reptilesAcuaticosBD.csv"))) {
+                    for (String[] row : rows) {
+                            bw.write(String.join(",", row));
+                            bw.newLine();
+                    }
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
             }
-        } catch (IOException e) {
-            e.printStackTrace();
         }
+//
+//
+//
+//
+//
+//
+//
+//
+// Lista para almacenar las filas del CSV excepto la del reptil a eliminar
+//        List<String[]> rows = new ArrayList<>();
+//        boolean esPrimeraLinea = true;
+//
+//        // Leer el archivo CSV y almacenar solo las filas que no coinciden con el reptil a eliminar
+//        try (BufferedReader br = new BufferedReader(new FileReader("src/bd/reptilesAcuaticosBD.csv"))) {
+//            String line;
+//            while ((line = br.readLine()) != null) {
+//                // Saltar la primera línea que contiene encabezados
+//                if (esPrimeraLinea) {
+//                    esPrimeraLinea = false;
+//                    continue;
+//                }
+//                String[] data = line.split(",");
+//
+//
+//                // Crear un objeto temporal para verificar la igualdad
+//                ReptilAcuatico reptil = new ReptilAcuatico(data[0], data[1], Integer.parseInt(data[2]),
+//                        Boolean.parseBoolean(data[3]), Integer.parseInt(data[4]), Double.parseDouble(data[5]),
+//                        Double.parseDouble(data[6]), Boolean.parseBoolean(data[7]), data[8],
+//                        Double.parseDouble(data[9]), data[10], Boolean.parseBoolean(data[11]),
+//                        Double.parseDouble(data[12]), Double.parseDouble(data[13]));
+//
+//                // Añadir a la lista solo si el objeto no es el que queremos eliminar
+//                if (!reptil.equals(reptilEliminar)) {
+//                    rows.add(data);
+//                }
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//        // Sobreescribir el archivo CSV con los datos de 'rows' para excluir el reptil eliminado
+//        try (BufferedWriter bw = new BufferedWriter(new FileWriter("src/bd/reptilesAcuaticosBD.csv"))) {
+//            for (String[] row : rows) {
+//                bw.write(String.join(",", row));
+//                bw.newLine();
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
     }
 
