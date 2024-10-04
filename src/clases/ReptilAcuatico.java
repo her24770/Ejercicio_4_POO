@@ -69,6 +69,7 @@ public class ReptilAcuatico extends Reptil{
     /**
      * @return informacion del Reptil Acuatico
      */
+    @Override
     public String toString() {
         String recinto = "";
         int costoMantener=0;

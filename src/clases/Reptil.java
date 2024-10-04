@@ -142,6 +142,15 @@ public class Reptil extends Animal{
      */
     @Override
     public String toString() {
-        return "";
+        return "\nNombre cientifico: " + nombreCientifico +
+                "\nHabitat: " + descripcionHabitat +
+                "\nEsperanza de vida: " + vidaEsperanza +" años" +
+                "\nIntercambio: " + intercambio +
+                "\nTemperatura: " + temperatura + "° C" +
+                "\nProm. huevos/puesta: " + huevos +
+                "\nPeso: " + peso + " kg" +
+                "\nEn peligro: " + peligroExt +
+                "\nDieta: " + dieta +
+                "\nLongitud: " + longitud + " metros";
     }
 }
