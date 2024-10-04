@@ -1,6 +1,13 @@
 
+import clases.Animal;
+import clases.ReptilAcuatico;
+import clases.Serpiente;
+import controlador.ReptilesAcuaticosController;
+import controlador.SerpientesController;
 import vistas.Home;
 import javax.swing.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Programa taxonomico para intercambio de animales e ingreso de los individuos existentes al zoologico La Aurora
@@ -11,7 +18,14 @@ import javax.swing.*;
 public class Main {
     //Levantamiento de vista
     public static void main(String[] args) {
+        SerpientesController serpientesController = new SerpientesController();
+        ReptilesAcuaticosController acuaticosController = new ReptilesAcuaticosController();
+        List<Animal> animales = new ArrayList<>();
+        animales.addAll(serpientesController.listSerpientes());
+        animales.addAll(acuaticosController.listReptilesAcuaticos());
+
         Home viewHome = new Home();
+        viewHome.setAnimalesList(animales);
         viewHome.setTitle("Registro Animal");
         viewHome.setContentPane(viewHome.getPanelHome());
         viewHome.setSize(1000,400);

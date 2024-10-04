@@ -72,28 +72,42 @@ public class ReptilAcuatico extends Reptil{
     @Override
     public String toString() {
         String recinto = "";
-        int costoMantener=0;
+        int costorecinto=0;
+        double costoAlimentacionMenor=0;
+        double costoAlimentacionMayor=0;
         if (especie=="t"){
             if (longitud < 20) {
                 recinto= "Pequeño (1-2 metros cuadrados )";
-                costoMantener=50;
+                costorecinto=50;
+                costoAlimentacionMenor=(1000*0.05*0.05*peso);
+                costoAlimentacionMayor=(1000*0.05*0.10*peso);
             } else if (longitud >= 20 && longitud <= 40) {
                 recinto= "Mediano (2-4 metros cuadrados)";
-                costoMantener=200;
+                costorecinto=200;
+                costoAlimentacionMenor=(1000*0.05*0.8*peso);
+                costoAlimentacionMayor=(1000*0.05*0.15*peso);
             } else {
                 recinto= "Grande (4-6 metros cuadrados)";
-                costoMantener=500;
+                costorecinto=500;
+                costoAlimentacionMenor=(1000*0.05*0.10*peso);
+                costoAlimentacionMayor=(1000*0.05*0.20*peso);
             }
         }else{
             if (longitud < 100) {
                 recinto= "Pequeño (1-2 metros cuadrados )";
-                costoMantener=50;
+                costorecinto=50;
+                costoAlimentacionMenor=(1000*0.05*0.05*peso);
+                costoAlimentacionMayor=(1000*0.05*0.10*peso);
             } else if (longitud >= 100 && longitud <= 200) {
-                costoMantener=100;
+                costorecinto=100;
                 recinto= "Mediano (2-4 metros cuadrados)";
+                costoAlimentacionMenor=(1000*0.05*0.8*peso);
+                costoAlimentacionMayor=(1000*0.05*0.15*peso);
             } else {
                 recinto= "Grande (4-6 metros cuadrados)";
-                costoMantener=500;
+                costoAlimentacionMenor=(1000*0.05*0.10*peso);
+                costoAlimentacionMayor=(1000*0.05*0.20*peso);
+                costorecinto=500;
             }
         }
 
@@ -114,7 +128,8 @@ public class ReptilAcuatico extends Reptil{
                 "\nVelocidad de Nado: " + nado + " km/h "+
                 "\nTiempo de Buceo: " + buceo + "min"+
                 "\nRecinto: " + recinto+
-                "\nCosto Recinto: " + costoMantener;
+                "\nCosto Recinto: " + costorecinto+
+                "\nCosto alimentacion: Q" + costoAlimentacionMenor+" -  Q"+costoAlimentacionMayor;
     }
 
 }

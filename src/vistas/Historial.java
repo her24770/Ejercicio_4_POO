@@ -1,7 +1,6 @@
 package vistas;
 
-import clases.ReptilAcuatico;
-import clases.Serpiente;
+import clases.Animal;
 import controlador.ReptilesAcuaticosController;
 import controlador.SerpientesController;
 
@@ -10,8 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Historial extends  JFrame{
-    private JList<String> jlistSerpientes;
-    private JList<String> jlistAcuaticos;
+    private JList<String> jListhistorial;
     private JPanel panelHitorial;
 
     public JPanel getPanelHitorial() {
@@ -24,21 +22,13 @@ public class Historial extends  JFrame{
 
 
     public Historial() {
-        List<Serpiente> listSerpientes = serpientesController.historialSerpientes();
-        DefaultListModel<String> listModelSerpientes = new DefaultListModel<>();
-        for (Serpiente serpiente : listSerpientes) {
-            listModelSerpientes.addElement(serpiente.getNombreCientifico());
+        List<Animal> historialAnimal = new ArrayList<>();
+        historialAnimal.addAll(reptilesAcuaticosController.historialReptilesAcuaticos());
+        historialAnimal.addAll(serpientesController.historialSerpientes());
+        DefaultListModel<String> listmodel = new DefaultListModel<>();
+        for (Animal animal : historialAnimal) {
+            listmodel.addElement(animal.getNombreCientifico());
         }
-        jlistSerpientes.setModel(listModelSerpientes);
-
-
-
-
-        List<ReptilAcuatico> listAcuaticos = reptilesAcuaticosController.historialReptilesAcuaticos();
-        DefaultListModel<String> listModelAcuaticos = new DefaultListModel<>();
-        for (ReptilAcuatico reptilAcuatico : listAcuaticos) {
-            listModelAcuaticos.addElement(reptilAcuatico.getNombreCientifico());
-        }
-        jlistAcuaticos.setModel(listModelAcuaticos);
+        jListhistorial.setModel(listmodel);
     }
 }

@@ -124,17 +124,25 @@ public class Serpiente extends Reptil{
      */
     @Override
     public String toString() {
-        int costoMantener=0;
+        int costoRecinto=0;
+        double costoAlimentoMenor=0;
+        double costoAlimentoMayor=0;
         String recinto = "";
         if (longitud < 1) {
             recinto= "Pequeño (1-2 metros cuadrados )";
-            costoMantener=50;
+            costoRecinto=50;
+            costoAlimentoMenor=(1000*0.05*0.02*peso);
+            costoAlimentoMayor=(1000*0.05*0.05*peso);
         } else if (longitud >= 1 && longitud <= 2) {
             recinto= "Mediano (2-4 metros cuadrados)";
-            costoMantener=100;
+            costoAlimentoMenor=(1000*0.05*0.03*peso);
+            costoAlimentoMayor=(1000*0.05*0.06*peso);
+            costoRecinto=200;
         } else {
             recinto= "Grande (4-6 metros cuadrados)";
-            costoMantener=200;
+            costoRecinto=500;
+            costoAlimentoMenor=(1000*0.05*0.04*peso);
+            costoAlimentoMayor=(1000*0.05*0.08*peso);
         }
 
 
@@ -160,7 +168,8 @@ public class Serpiente extends Reptil{
                 "\nColor: " + color +
                 "\nVenenosa: " + venenosa +
                 "\nRecinto: " + recinto +
-                "\nCosto Recinto: " + costoMantener+
+                "\nCosto Recinto: Q" + costoRecinto+
+                "\nCosto alimento mensual: Q" + costoAlimentoMenor+"  -  Q"+costoAlimentoMayor+
                 type;
     }
 }

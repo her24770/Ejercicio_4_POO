@@ -1,6 +1,8 @@
 package clases;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,10 +15,10 @@ public class Animal {
 
     /**
      * Constructor personalizado para cualquier animal
-     * @param nombreCientifico   nombre cientifico de la serpiente
+     * @param nombreCientifico nombre cientifico de la serpiente
      * @param descripcionHabitat cómo es el habitat de la serpiente
-     * @param vidaEsperanza      años que vive
-     * @param intercambio        fue obtenida por intercambio
+     * @param vidaEsperanza años que vive
+     * @param intercambio fue obtenida por intercambio
      */
     public Animal(String nombreCientifico, String descripcionHabitat, int vidaEsperanza, boolean intercambio) {
         this.nombreCientifico = nombreCientifico;
@@ -28,62 +30,62 @@ public class Animal {
     /**
      * Constructor vacio Animal
      */
-    public Animal() {
+    public Animal(){
     }
 
     /**
      * @param intercambio define si el animal fue intercambiado o no
      */
-    public void setIntercambio(boolean intercambio) {
+    public void setIntercambio(boolean intercambio){
         this.intercambio = intercambio;
     }
 
     /**
      * @return define si el animal fue intercambiado o no
      */
-    public boolean getIntercambio() {
+    public boolean getIntercambio(){
         return intercambio;
     }
 
     /**
      * @param nombreCientifico El nombre cientifico del animal
      */
-    public void setNombreCientifico(String nombreCientifico) {
+    public void setNombreCientifico(String nombreCientifico){
         this.nombreCientifico = nombreCientifico;
     }
 
     /**
      * @return El nombre cientifico del animal
      */
-    public String getNombreCientifico() {
+    public String getNombreCientifico(){
         return nombreCientifico;
     }
 
     /**
      * @param descripcionHabitat Describe el tipo de habitat en el que vive
      */
-    public void setDescripcionHabitat(String descripcionHabitat) {
+    public void setDescripcionHabitat(String descripcionHabitat){
         this.descripcionHabitat = descripcionHabitat;
     }
 
     /**
      * @return Describe el tipo de habitat en el que vive
      */
-    public String getDescripcionHabitat() {
+    public String getDescripcionHabitat(){
         return descripcionHabitat;
     }
 
     /**
      * @param vidaEsperanza La esperanza de Vida del animal
      */
-    public void setVidaEsperanza(int vidaEsperanza) {
+    public void setVidaEsperanza(int vidaEsperanza){
         this.vidaEsperanza = vidaEsperanza;
     }
 
     /**
      * @return La esperanza de Vida del animal
      */
-    public int getVidaEsperanza() {
+    public int getVidaEsperanza(){
         return vidaEsperanza;
     }
 
