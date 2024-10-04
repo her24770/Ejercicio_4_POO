@@ -98,4 +98,30 @@ public class Animal {
                 "\nEsperanza de Vida: " + vidaEsperanza +
                 "\nIntercambio: " + intercambio;
     }
+
+    /**
+     *
+     * @param newAnimal animal al que se le realizara el presupuesto
+     * @return
+     */
+    public double[] presupuesto(Animal newAnimal){
+        double costoMenor;
+        double costoMayor;
+
+
+        //Recinto pequeño
+        costoMenor=0;
+        costoMayor=0;
+
+        //recinto mediano
+        costoMenor=1;
+        costoMayor=1;
+
+        //Recinto grande
+        costoMenor=2;
+        costoMayor=2;
+
+        return new double[]{costoMenor,costoMayor};
+
+    }
 }
