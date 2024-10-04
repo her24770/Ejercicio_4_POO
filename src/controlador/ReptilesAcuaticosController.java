@@ -203,6 +203,7 @@ public class ReptilesAcuaticosController {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(",");
+                System.out.println(data[2]);
 
                 // Crear un objeto temporal para verificar la igualdad
                 ReptilAcuatico reptil = new ReptilAcuatico(data[0], data[1], Integer.parseInt(data[2]),
