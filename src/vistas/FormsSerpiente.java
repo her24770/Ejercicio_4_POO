@@ -1,11 +1,14 @@
 package vistas;
 
+import clases.Animal;
 import clases.Serpiente;
+import controlador.ReptilesAcuaticosController;
 import controlador.SerpientesController;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 
 public class FormsSerpiente extends JFrame{
@@ -30,7 +33,13 @@ public class FormsSerpiente extends JFrame{
         return panelSerpiente;
     }
 
-    Serpiente serpiente = null;
+    //variables
+    private Serpiente serpiente = null;
+    private String estadoAcciones="add";
+
+    public void setEstadoAcciones(String estadoAcciones) {
+        this.estadoAcciones = estadoAcciones;
+    }
 
     public void setSerpiente(Serpiente serpiente) {
         this.serpiente = serpiente;
@@ -38,19 +47,26 @@ public class FormsSerpiente extends JFrame{
 
     //Controlador
     SerpientesController serpientesController=new SerpientesController();
+    Home viewHome=new Home();
 
     public FormsSerpiente(){
+        serpiente=(Serpiente) viewHome.getSelectedAnimal();
+        System.out.println(serpiente);
+        llenarinputs(serpiente);
+
+
         btnaddSerpiente.addActionListener(new ActionListener() {
            @Override
            public void actionPerformed(ActionEvent e) {
                Serpiente newSerpiente = new Serpiente();
+
                if ("".equals(inputNOmbre.getText())||"".equals(inputDieta.getText())||"".equals(inputDescripcionHabitat.getText()) ||
                     "".equals(inputLongitud.getText())||"".equals(inputVidaEzperanza.getText())||"".equals(inputEspecie.getText()) ||
                        "".equals(inputCOlor.getText())||"".equals(inputPeso.getText())||"".equals(inputVidaEzperanza.getText()) ||
                        "".equals(inputTemperatura.getText())||"".equals(inputVenenosa.getText())||"".equals(inputHuevos.getText())||
                        "".equals(inputHuevos.getText())||"".equals(inputPeligroExt.getText())
                ){
-                    JOptionPane.showMessageDialog(null,"No puee enviar espacios vacios");
+                    JOptionPane.showMessageDialog(null,"No puede enviar espacios vacios");
                }else{
                    newSerpiente.setNombreCientifico(inputNOmbre.getText());
                    newSerpiente.setDieta(inputDieta.getText());
@@ -75,32 +91,32 @@ public class FormsSerpiente extends JFrame{
                    }else{
                        JOptionPane.showMessageDialog(null,"Recuerde usar 's' o 'n' en casillas indicadas");
                    }
-
                    String message="Costo total (recinto + comida) : [" + serpientesController.presupuesto(newSerpiente)[0] + "-" + serpientesController.presupuesto(newSerpiente)[1] + "] Quetzales";
-                   if (serpiente==null){
-                       if(Integer.parseInt(inputPresupuesto.getText())<serpientesController.presupuesto(newSerpiente)[0]){
+                   //
+                   if (estadoAcciones=="add"){
+                       if(1==2){
+                           //Validacion de presupuesto
                            JOptionPane.showMessageDialog(null,"El presupuesto no es suficiente para mantener la especie");
                        }else{
                            int respuesta = JOptionPane.showConfirmDialog(null, message, "Confirmación", JOptionPane.YES_NO_OPTION);
                            if (respuesta == JOptionPane.YES_OPTION) {
                                serpientesController.addSerpiente(newSerpiente);
-                           } else if (respuesta == JOptionPane.NO_OPTION) {
-
                            }
                        }
-                   }else{
-                       if(Integer.parseInt(inputPresupuesto.getText())<serpientesController.presupuesto(newSerpiente)[0]){
+                   }else if(estadoAcciones=="inter"||estadoAcciones=="edit"){
+                       System.out.println(estadoAcciones);
+                       if(1==2){
                            JOptionPane.showMessageDialog(null,"El presupuesto no es suficiente para mantener la especie");
                        }else{
                            int respuesta = JOptionPane.showConfirmDialog(null, message, "Confirmación", JOptionPane.YES_NO_OPTION);
                            if (respuesta == JOptionPane.YES_OPTION) {
-                               List<Serpiente> listSerpientes = serpientesController.listSerpientes();
                                serpientesController.intercambio(serpiente,newSerpiente);
-                           } else if (respuesta == JOptionPane.NO_OPTION) {
-
                            }
                        }
                    }
+                   dispose();
+
+                   //
 
                }
            }
@@ -116,6 +132,17 @@ public class FormsSerpiente extends JFrame{
         }
     }
 
+    public double presupuestoActual() {
+        SerpientesController serpientesController = new SerpientesController();
+        ReptilesAcuaticosController acuaticosController = new ReptilesAcuaticosController();
+        List<Animal> animales = new ArrayList<>();
+        animales.addAll(serpientesController.listSerpientes());
+        animales.addAll(acuaticosController.listReptilesAcuaticos());
+        double presupuesto = 0;
+
+        return presupuesto;
+    }
+
     public boolean esSyN(String texto) {
         return texto.equalsIgnoreCase("s") || texto.equalsIgnoreCase("n");
     }
@@ -123,5 +150,31 @@ public class FormsSerpiente extends JFrame{
     public boolean esS(String texto) {
         return texto.equalsIgnoreCase("s");
     }
+
+    public static String convertirBooleanoAString(boolean valor) {
+        if (valor) {
+            return "s";  // Si es true, retorna "s"
+        } else {
+            return "n";  // Si es false, retorna "n"
+        }
+    }
+
+    public void llenarinputs(Serpiente serpienteiew){
+        inputNOmbre.setText(serpienteiew.getNombreCientifico());
+        inputDieta.setText(serpienteiew.getDieta());
+        inputDescripcionHabitat.setText(serpienteiew.getDescripcionHabitat());
+        inputVidaEzperanza.setText(Integer.toString(serpienteiew.getVidaEsperanza()));
+        inputPeso.setText(Double.toString(serpienteiew.getPeso()));
+        inputTemperatura.setText(Integer.toString(serpienteiew.getTemperatura()));
+        inputHuevos.setText(Double.toString(serpienteiew.getHuevos()));
+        inputPeligroExt.setText(convertirBooleanoAString(serpienteiew.getPeligroExt()));
+        inputLongitud.setText(Double.toString(serpienteiew.getLongitud()));
+        inputEspecie.setText(serpienteiew.getEspecie());
+        inputCOlor.setText(serpienteiew.getColor());
+        inputTipoVeneno.setText(convertirBooleanoAString(serpienteiew.getTipoVeneno()));
+        inputVenenosa.setText(convertirBooleanoAString(serpienteiew.getVenenosa()));
+    }
+
+
 
 }
