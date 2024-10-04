@@ -73,26 +73,9 @@ public class FormsAcuaticos extends JFrame{
                     }else {
                         JOptionPane.showMessageDialog(null,"Especie solo puede ser 't' o 'c'");
                     }
-                    String recinto = "";
-                    double costomayor=0;
-                    double costoMenor=0;
 
-                        if (newAcuatico.getLongitud() < 100) {
-                            recinto= "Pequeño (1-2 metros cuadrados )";
-                            costoMenor=50+(1000*0.05*0.05*newAcuatico.getPeso());
-                            costomayor=50+(1000*0.05*0.10*newAcuatico.getPeso());
-                        } else if (newAcuatico.getLongitud() >= 100 && newAcuatico.getLongitud() <= 200) {
-                            costoMenor=100+(1000*0.05*0.8*newAcuatico.getPeso());
-                            costomayor=100+(1000*0.05*0.15*newAcuatico.getPeso());
-                            recinto= "Mediano (2-4 metros cuadrados)";
-                        } else {
-                            recinto= "Grande (4-6 metros cuadrados)";
-                            costoMenor=500+(1000*0.05*0.10*newAcuatico.getPeso());
-                            costomayor=500+(1000*0.05*0.20*newAcuatico.getPeso());
-                        }
-
-                    String message="Recinto : "+recinto+"   Costo : Q"+costoMenor+" -  Q"+costomayor;
-                    if(Integer.parseInt(inputPresupuesto.getText())<costoMenor){
+                    String message="Costo total (recinto + comida) : [" + acuaticosController.presupuesto(newAcuatico)[0] + "-" + acuaticosController.presupuesto(newAcuatico)[1] + "] Quetzales";
+                    if(Integer.parseInt(inputPresupuesto.getText())<acuaticosController.presupuesto(newAcuatico)[0]){
                         JOptionPane.showMessageDialog(null,"El presupuesto no es suficiente para mantener la especie");
                     }else{
                         int respuesta = JOptionPane.showConfirmDialog(null, message, "Confirmación", JOptionPane.YES_NO_OPTION);

@@ -75,26 +75,10 @@ public class FormsSerpiente extends JFrame{
                    }else{
                        JOptionPane.showMessageDialog(null,"Recuerde usar 's' o 'n' en casillas indicadas");
                    }
-                   double costoMenor=0;
-                   double costoMayor=0;
-                   String recinto = "";
-                   if (newSerpiente.getLongitud() < 1) {
-                       recinto= "Pequeño (1-2 metros cuadrados )";
-                       costoMenor=50+(1000*0.05*0.02*newSerpiente.getPeso());
-                       costoMayor=50+(1000*0.05*0.05*newSerpiente.getPeso());
-                   } else if (newSerpiente.getPeso() >= 1 && newSerpiente.getPeso() <= 2) {
-                       recinto= "Mediano (2-4 metros cuadrados)";
-                       costoMenor=200+(1000*0.05*0.03*newSerpiente.getPeso());
-                       costoMayor=200+(1000*0.05*0.06*newSerpiente.getPeso());
-                   } else {
-                       recinto= "Grande (4-6 metros cuadrados)";
-                       costoMenor=500+(1000*0.05*0.04*newSerpiente.getPeso());
-                       costoMayor=500+(1000*0.05*0.08*newSerpiente.getPeso());
-                   }
 
-                   String message="Recinto : "+recinto+"   Costo : Q"+costoMenor+" -  Q"+costoMayor;
+                   String message="Costo total (recinto + comida) : [" + serpientesController.presupuesto(newSerpiente)[0] + "-" + serpientesController.presupuesto(newSerpiente)[1] + "] Quetzales";
                    if (serpiente==null){
-                       if(Integer.parseInt(inputPresupuesto.getText())<costoMenor){
+                       if(Integer.parseInt(inputPresupuesto.getText())<serpientesController.presupuesto(newSerpiente)[0]){
                            JOptionPane.showMessageDialog(null,"El presupuesto no es suficiente para mantener la especie");
                        }else{
                            int respuesta = JOptionPane.showConfirmDialog(null, message, "Confirmación", JOptionPane.YES_NO_OPTION);
@@ -105,7 +89,7 @@ public class FormsSerpiente extends JFrame{
                            }
                        }
                    }else{
-                       if(Integer.parseInt(inputPresupuesto.getText())<costoMenor){
+                       if(Integer.parseInt(inputPresupuesto.getText())<serpientesController.presupuesto(newSerpiente)[0]){
                            JOptionPane.showMessageDialog(null,"El presupuesto no es suficiente para mantener la especie");
                        }else{
                            int respuesta = JOptionPane.showConfirmDialog(null, message, "Confirmación", JOptionPane.YES_NO_OPTION);
