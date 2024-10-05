@@ -1,8 +1,8 @@
 NombreCientfico, descripcionHabitat, vidaEsperanza, intercambio, temperatura, huevos, peso, peligroExt, dieta, longitud, especie, color, venenosa, tipoVeneno
-aToilet1, rocoso, 15, false, 25, 3.5, 11, true, carnivoro, 11.0, filanguis, rojo, false, false
+aToilet1, rocoso, 15, false, 25, 3.5, 500, true, carnivoro, 5, filanguis, rojo, false, false
 q,q,1,false,1,1.0,1.0,true,q,1.0,q,q,true,true
-aToilet3, rocoso, 15, false, 25, 3.5, 11, true, carnivoro, 11.0, filanguis, rojo, false, false
-aToilet4, rocoso, 15, true, 25, 3.5, 11, true, carnivoro, 11.0, filanguis, rojo, false, false
+aToilet3, rocoso, 15, false, 25, 3.5, 11, true, carnivoro, 6.0, filanguis, rojo, false, false
+aToilet4, rocoso, 15, true, 25, 3.5, 11, true, carnivoro, 6.0, filanguis, rojo, false, false
 q,q,1,false,1,1.0,1.0,true,q,1.0,q,q,true,true
-q,q,1,false,1,11.0,1.0,false,q,1.0,q,q,true,true
+q,q,1,false,1,11.0,1.0,false,q,10000.0,q,q,true,true
 w,w,1,false,1,1.0,1.0,true,w,1.0,w,w,true,true
