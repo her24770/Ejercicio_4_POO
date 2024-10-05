@@ -122,6 +122,14 @@ public class Animal {
         costoMayor=2;
 
         return new double[]{costoMenor,costoMayor};
+    }
 
+    public double presupuestoZoo(List<Animal> animales){
+        double minBudget = 0;
+
+        for (Animal animal : animales){
+            minBudget += (animal.presupuesto(animal)[0] * 12);
+        }
+        return minBudget;
     }
 }

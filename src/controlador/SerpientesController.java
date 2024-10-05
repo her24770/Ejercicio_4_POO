@@ -187,16 +187,16 @@ public class SerpientesController {
 
         if (newSerpiente.getLongitud() < 1) {
             //Recinto Pequeño (1-2 metros cuadrados );
-            costoMenor=50+(1000*0.05*0.02*newSerpiente.getPeso());
-            costoMayor=50+(1000*0.05*0.05*newSerpiente.getPeso());
-        } else if (newSerpiente.getPeso() >= 1 && newSerpiente.getPeso() <= 2) {
+            costoMenor=50+(1000*0.05*0.02*newSerpiente.getPeso()*31);
+            costoMayor=50+(1000*0.05*0.05*newSerpiente.getPeso()*31);
+        } else if (newSerpiente.getLongitud() >= 1 && newSerpiente.getLongitud() <= 2) {
             //Recinto Mediano 2-4 metros
-            costoMenor=200+(1000*0.05*0.03*newSerpiente.getPeso());
-            costoMayor=200+(1000*0.05*0.06*newSerpiente.getPeso());
+            costoMenor=200+(1000*0.05*0.03*newSerpiente.getPeso()*31);
+            costoMayor=200+(1000*0.05*0.06*newSerpiente.getPeso()*31);
         } else {
             //Recinto Grande 4-6 metros
-            costoMenor=500+(1000*0.05*0.04*newSerpiente.getPeso());
-            costoMayor=500+(1000*0.05*0.08*newSerpiente.getPeso());
+            costoMenor=500+(1000*0.05*0.04*newSerpiente.getPeso()*31);
+            costoMayor=500+(1000*0.05*0.08*newSerpiente.getPeso()*31);
         }
         return new double[] {costoMenor, costoMayor};
     }
