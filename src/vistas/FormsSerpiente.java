@@ -43,6 +43,10 @@ public class FormsSerpiente extends JFrame{
 
     public void setSerpiente(Serpiente serpiente) {
         this.serpiente = serpiente;
+    }
+
+    public void setSerpiente2(Serpiente serpiente) {
+        this.serpiente = serpiente;
         if(serpiente!=null){
             inputNOmbre.setText(serpiente.getNombreCientifico());
             inputDieta.setText(serpiente.getDieta());
@@ -62,13 +66,8 @@ public class FormsSerpiente extends JFrame{
 
     //Controlador
     SerpientesController serpientesController=new SerpientesController();
-    Home viewHome=new Home();
 
     public FormsSerpiente(){
-        serpiente=(Serpiente) viewHome.getSelectedAnimal();
-        //llenarinputs(serpiente);
-
-
         btnaddSerpiente.addActionListener(new ActionListener() {
            @Override
            public void actionPerformed(ActionEvent e) {
@@ -129,9 +128,6 @@ public class FormsSerpiente extends JFrame{
                        }
                    }
                    dispose();
-
-                   //
-
                }
            }
         });
@@ -144,17 +140,6 @@ public class FormsSerpiente extends JFrame{
         } catch (NumberFormatException e) {
             return false;
         }
-    }
-
-    public double presupuestoActual() {
-        SerpientesController serpientesController = new SerpientesController();
-        ReptilesAcuaticosController acuaticosController = new ReptilesAcuaticosController();
-        List<Animal> animales = new ArrayList<>();
-        animales.addAll(serpientesController.listSerpientes());
-        animales.addAll(acuaticosController.listReptilesAcuaticos());
-        double presupuesto = 0;
-
-        return presupuesto;
     }
 
     public boolean esSyN(String texto) {
@@ -172,7 +157,4 @@ public class FormsSerpiente extends JFrame{
             return "n";  // Si es false, retorna "n"
         }
     }
-
-
-
 }
