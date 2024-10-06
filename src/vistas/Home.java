@@ -53,7 +53,6 @@ public class Home extends JFrame {
     public Home() {
         addJListAnimales("all");
 
-
         JListerFilterEspecie.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
@@ -128,6 +127,7 @@ public class Home extends JFrame {
                     viewFormSerpiente.setSize(1000,400);
                     viewFormSerpiente.setVisible(true);
                     viewFormSerpiente.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    addJListAnimales("all");
                 }else if (estadoEspecie=="acuaticos"){
                     FormsAcuaticos vieFromAScuatico = new FormsAcuaticos();
                     vieFromAScuatico.setEstadoAcciones("add");
@@ -136,6 +136,7 @@ public class Home extends JFrame {
                     vieFromAScuatico.setSize(1000,400);
                     vieFromAScuatico.setVisible(true);
                     vieFromAScuatico.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    addJListAnimales("all");
                 }else {
                     JOptionPane.showMessageDialog(null,"Debe elegir una especie para agregar");
                 }
@@ -158,6 +159,7 @@ public class Home extends JFrame {
                         viewFormSerpiente.setSize(1000,400);
                         viewFormSerpiente.setVisible(true);
                         viewFormSerpiente.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                        addJListAnimales("all");
                     }else if (estadoEspecie=="acuaticos"){
                         FormsAcuaticos vieFromAScuatico = new FormsAcuaticos();
                         vieFromAScuatico.setEstadoAcciones(estadoAccion);
@@ -167,6 +169,7 @@ public class Home extends JFrame {
                         vieFromAScuatico.setSize(1000,400);
                         vieFromAScuatico.setVisible(true);
                         vieFromAScuatico.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                        addJListAnimales("all");
                     }
                 }else {
                     JOptionPane.showMessageDialog(null,"Debe elegir una especie para intercambiar");
@@ -191,6 +194,7 @@ public class Home extends JFrame {
                         viewFormSerpiente.setSize(1000,400);
                         viewFormSerpiente.setVisible(true);
                         viewFormSerpiente.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                        addJListAnimales("all");
                     }else if (estadoEspecie=="acuaticos"){
                         ReptilAcuatico editeAcuatico = (ReptilAcuatico) animalesList.get(jlistAnimales.getSelectedIndex());
                         FormsAcuaticos vieFromAScuatico = new FormsAcuaticos();
@@ -201,6 +205,7 @@ public class Home extends JFrame {
                         vieFromAScuatico.setSize(1000,400);
                         vieFromAScuatico.setVisible(true);
                         vieFromAScuatico.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                        addJListAnimales("all");
                     }
                 }else {
                     JOptionPane.showMessageDialog(null,"Debe elegir una especie para editar");
