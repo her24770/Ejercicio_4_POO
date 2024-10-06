@@ -74,8 +74,8 @@ public class FormsAcuaticos extends JFrame{
                         JOptionPane.showMessageDialog(null,"Especie solo puede ser 't' o 'c'");
                     }
 
-                    String message="Costo total (recinto + comida) : [" + acuaticosController.presupuesto(newAcuatico)[0] + "-" + acuaticosController.presupuesto(newAcuatico)[1] + "] Quetzales";
-                    if(Integer.parseInt(inputPresupuesto.getText())<acuaticosController.presupuesto(newAcuatico)[0]){
+                    String message="Costo total (recinto + comida) : [" + newAcuatico.presupuesto()[0] + "-" + newAcuatico.presupuesto()[1] + "] Quetzales";
+                    if(Integer.parseInt(inputPresupuesto.getText())<newAcuatico.presupuesto()[0]){
                         JOptionPane.showMessageDialog(null,"El presupuesto no es suficiente para mantener la especie");
                     }else{
                         int respuesta = JOptionPane.showConfirmDialog(null, message, "Confirmación", JOptionPane.YES_NO_OPTION);

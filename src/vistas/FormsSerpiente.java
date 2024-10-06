@@ -35,6 +35,7 @@ public class FormsSerpiente extends JFrame{
 
     //variables
     private Serpiente serpiente = null;
+    private Animal animal = null;
     private String estadoAcciones="add";
 
     public void setEstadoAcciones(String estadoAcciones) {
@@ -105,7 +106,7 @@ public class FormsSerpiente extends JFrame{
                    }else{
                        JOptionPane.showMessageDialog(null,"Recuerde usar 's' o 'n' en casillas indicadas");
                    }
-                   String message="Costo total (recinto + comida) : [" + serpientesController.presupuesto(newSerpiente)[0] + "-" + serpientesController.presupuesto(newSerpiente)[1] + "] Quetzales";
+                   String message="Costo total (recinto + comida) : [" + newSerpiente.presupuesto()[0] + "-" + newSerpiente.presupuesto()[1] + "] Quetzales";
                    //
                    if (estadoAcciones=="add"){
                        if(1==2){

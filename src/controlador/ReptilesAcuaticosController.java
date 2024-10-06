@@ -174,26 +174,6 @@ public class ReptilesAcuaticosController {
         return msg;
     }
 
-    public double[] presupuesto(ReptilAcuatico newReptilAcuatico) {
-        double costoMenor;
-        double costoMayor;
-
-        if (newReptilAcuatico.getLongitud() < 0.4) {
-            //Recinto pequeño 1-2 metros cuadrados
-            costoMenor = 50 + (0.05*0.05*1000*newReptilAcuatico.getPeso()*31);
-            costoMayor = 50 + (0.05*0.1*1000*newReptilAcuatico.getPeso()*31);
-        } else if (newReptilAcuatico.getLongitud() >= 0.4 && newReptilAcuatico.getLongitud() <= 1) {
-            //Recinto mediano 2-4 metros cuadrados
-            costoMenor = 200 + (1000 * 0.05 * 0.8 * newReptilAcuatico.getPeso()*31);
-            costoMayor = 200 + (1000 * 0.05 * 0.15 * newReptilAcuatico.getPeso()*31);
-        } else {
-            //Recinto grande 4-6 metros cuadrados
-            costoMenor = 500 + (1000 * 0.05 * 0.10 * newReptilAcuatico.getPeso()*31);
-            costoMayor = 500 + (1000 * 0.05 * 0.20 * newReptilAcuatico.getPeso()*31);
-        }
-        return new double[]{costoMenor, costoMayor};
-    }
-
     public String eliminar(ReptilAcuatico egreso) {
         String msg = "";
 

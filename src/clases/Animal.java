@@ -101,10 +101,11 @@ public class Animal {
 
     /**
      *
-     * @param newAnimal animal al que se le realizara el presupuesto
+     * @param animal animal al que se le realizara el presupuesto
      * @return
      */
-    public double[] presupuesto(Animal newAnimal){
+
+    public double[] presupuesto(){
         double costoMenor;
         double costoMayor;
 
@@ -128,7 +129,7 @@ public class Animal {
         double minBudget = 0;
 
         for (Animal animal : animales){
-            minBudget += (animal.presupuesto(animal)[0] * 12);
+            minBudget += (animal.presupuesto()[0] * 12);
         }
         return minBudget;
     }

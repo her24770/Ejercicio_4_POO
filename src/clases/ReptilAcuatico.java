@@ -132,4 +132,24 @@ public class ReptilAcuatico extends Reptil{
                 "\nCosto alimentacion: Q" + costoAlimentacionMenor+" -  Q"+costoAlimentacionMayor;
     }
 
+    @Override
+    public double[] presupuesto() {
+        double costoMenor;
+        double costoMayor;
+
+        if (longitud < 40) {
+            //Recinto pequeño 1-2 metros cuadrados
+            costoMenor = 50 + (0.05*0.05*1000*peso*31);
+            costoMayor = 50 + (0.05*0.1*1000*peso*31);
+        } else if (longitud >= 40 && longitud <= 100) {
+            //Recinto mediano 2-4 metros cuadrados
+            costoMenor = 200 + (1000 * 0.05 * 0.8 * peso*31);
+            costoMayor = 200 + (1000 * 0.05 * 0.15 * peso *31);
+        } else {
+            //Recinto grande 4-6 metros cuadrados
+            costoMenor = 500 + (1000 * 0.05 * 0.10 * peso*31);
+            costoMayor = 500 + (1000 * 0.05 * 0.20 * peso*31);
+        }
+        return new double[]{costoMenor, costoMayor};
+    }
 }

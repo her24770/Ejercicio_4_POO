@@ -172,4 +172,25 @@ public class Serpiente extends Reptil{
                 "\nCosto alimento mensual: Q" + costoAlimentoMenor+"  -  Q"+costoAlimentoMayor+
                 type;
     }
+    @Override
+    public double[] presupuesto(){
+        double costoMenor;
+        double costoMayor;
+
+
+            if (longitud < 1) {
+                //Recinto Pequeño (1-2 metros cuadrados );
+                costoMenor=50+(1000*0.05*0.02*peso*31);
+                costoMayor=50+(1000*0.05*0.05*peso*31);
+            } else if (longitud >= 1 && longitud <= 2) {
+                //Recinto Mediano 2-4 metros
+                costoMenor=200+(1000*0.05*0.03*peso*31);
+                costoMayor=200+(1000*0.05*0.06*peso*31);
+            } else {
+                //Recinto Grande 4-6 metros
+                costoMenor=500+(1000*0.05*0.04*peso*31);
+                costoMayor=500+(1000*0.05*0.08*peso*31);
+            }
+        return new double[] {costoMenor, costoMayor};
+    }
 }

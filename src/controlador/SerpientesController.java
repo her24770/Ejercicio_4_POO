@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Controlador para funciones de la clase Serpiente
  */
-public class SerpientesController {
+public class SerpientesController{
 
     /**
      * Recorre el csv y regresa una lista con los objetos guardados
@@ -61,25 +61,25 @@ public class SerpientesController {
 
     /**
      * Agrega un nuevo individuo al csv de serppientes
-     * @param newSerpiente serpiente a agregar
+     * @param serpiente serpiente a agregar
      */
-    public void addSerpiente(Serpiente newSerpiente){
+    public void addSerpiente(Serpiente serpiente){
         try (BufferedWriter bw = new BufferedWriter(new FileWriter("src/bd/reptilesSerpientesBD.csv", true))){
             //Volver atributos en String
-            String nuevaLinea = newSerpiente.getNombreCientifico() + "," +
-                                newSerpiente.getDescripcionHabitat() + "," +
-                                newSerpiente.getVidaEsperanza() + "," +
-                                newSerpiente.getIntercambio() + "," +
-                                newSerpiente.getTemperatura() + "," +
-                                newSerpiente.getHuevos() + "," +
-                                newSerpiente.getPeso() + "," +
-                                newSerpiente.getPeligroExt() + "," +
-                                newSerpiente.getDieta() + "," +
-                                newSerpiente.getLongitud() + "," +
-                                newSerpiente.getEspecie() + "," +
-                                newSerpiente.getColor() + "," +
-                                newSerpiente.getVenenosa() + "," +
-                                newSerpiente.getTipoVeneno();
+            String nuevaLinea = serpiente.getNombreCientifico() + "," +
+                                serpiente.getDescripcionHabitat() + "," +
+                                serpiente.getVidaEsperanza() + "," +
+                                serpiente.getIntercambio() + "," +
+                                serpiente.getTemperatura() + "," +
+                                serpiente.getHuevos() + "," +
+                                serpiente.getPeso() + "," +
+                                serpiente.getPeligroExt() + "," +
+                                serpiente.getDieta() + "," +
+                                serpiente.getLongitud() + "," +
+                                serpiente.getEspecie() + "," +
+                                serpiente.getColor() + "," +
+                                serpiente.getVenenosa() + "," +
+                                serpiente.getTipoVeneno();
             //Escribir la linea en el csv
             bw.write(nuevaLinea);
             bw.newLine();
@@ -90,7 +90,7 @@ public class SerpientesController {
 
     /**
      * Muestra todos los individuos obtenidos por intercambio
-     * @return lista con los animales intercambiados
+     * @return lista con los serpientees intercambiados
      */
     public List<Serpiente> historialSerpientes(){
         List<Serpiente> allserpientes = listSerpientes();
@@ -174,31 +174,10 @@ public class SerpientesController {
 
             }
             else{
-                msg = "Este animal no se encuentra dentro de nuestro inventario.";
+                msg = "Este serpiente no se encuentra dentro de nuestro inventario.";
             }
         }
         return msg;
 
     }
-
-    public double[] presupuesto(Serpiente newSerpiente){
-        double costoMenor;
-        double costoMayor;
-
-        if (newSerpiente.getLongitud() < 1) {
-            //Recinto Pequeño (1-2 metros cuadrados );
-            costoMenor=50+(1000*0.05*0.02*newSerpiente.getPeso()*31);
-            costoMayor=50+(1000*0.05*0.05*newSerpiente.getPeso()*31);
-        } else if (newSerpiente.getLongitud() >= 1 && newSerpiente.getLongitud() <= 2) {
-            //Recinto Mediano 2-4 metros
-            costoMenor=200+(1000*0.05*0.03*newSerpiente.getPeso()*31);
-            costoMayor=200+(1000*0.05*0.06*newSerpiente.getPeso()*31);
-        } else {
-            //Recinto Grande 4-6 metros
-            costoMenor=500+(1000*0.05*0.04*newSerpiente.getPeso()*31);
-            costoMayor=500+(1000*0.05*0.08*newSerpiente.getPeso()*31);
-        }
-        return new double[] {costoMenor, costoMayor};
-    }
-
 }

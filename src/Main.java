@@ -35,7 +35,7 @@ public class Main {
         SerpientesController serpienteC =  new SerpientesController();
         Animal animal = new Animal();
 
-        System.out.print(animales.size());
+        System.out.println(animales.size());
         System.out.println(animal.presupuestoZoo(animales));
     }
 

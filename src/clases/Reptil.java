@@ -1,5 +1,7 @@
 package clases;
 
+import java.util.List;
+
 /**
  * Guarda los datos de los animales de tipo Reptil
  */
@@ -152,5 +154,25 @@ public class Reptil extends Animal{
                 "\nEn peligro: " + peligroExt +
                 "\nDieta: " + dieta +
                 "\nLongitud: " + longitud + " metros";
+    }
+    @Override
+    public double[] presupuesto(){
+        double costoMenor;
+        double costoMayor;
+
+
+        //Recinto pequeño
+        costoMenor=0.1;
+        costoMayor=0;
+
+        //recinto mediano
+        costoMenor=1;
+        costoMayor=1;
+
+        //Recinto grande
+        costoMenor=2;
+        costoMayor=2;
+
+        return new double[]{costoMenor,costoMayor};
     }
 }
