@@ -53,7 +53,6 @@ public class Home extends JFrame {
     public Home() {
         addJListAnimales("all");
 
-
         JListerFilterEspecie.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
@@ -77,6 +76,7 @@ public class Home extends JFrame {
             @Override
             public void valueChanged(ListSelectionEvent e) {
                 if(jlistAnimales.getSelectedIndex()>=0){
+                    estadoEspecie=identificarAnimal(animalesList.get(jlistAnimales.getSelectedIndex()));
                     selectedAnimal=animalesList.get(jlistAnimales.getSelectedIndex());
                     textAreaInformacion.setText(animalesList.get(jlistAnimales.getSelectedIndex()).toString());
                 }else{
@@ -127,13 +127,16 @@ public class Home extends JFrame {
                     viewFormSerpiente.setSize(1000,400);
                     viewFormSerpiente.setVisible(true);
                     viewFormSerpiente.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    addJListAnimales("all");
                 }else if (estadoEspecie=="acuaticos"){
                     FormsAcuaticos vieFromAScuatico = new FormsAcuaticos();
+                    vieFromAScuatico.setEstadoAcciones("add");
                     vieFromAScuatico.setTitle("Registro Animal");
                     vieFromAScuatico.setContentPane(vieFromAScuatico.getPanelAcuatico());
                     vieFromAScuatico.setSize(1000,400);
                     vieFromAScuatico.setVisible(true);
                     vieFromAScuatico.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    addJListAnimales("all");
                 }else {
                     JOptionPane.showMessageDialog(null,"Debe elegir una especie para agregar");
                 }
@@ -156,13 +159,17 @@ public class Home extends JFrame {
                         viewFormSerpiente.setSize(1000,400);
                         viewFormSerpiente.setVisible(true);
                         viewFormSerpiente.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                        addJListAnimales("all");
                     }else if (estadoEspecie=="acuaticos"){
                         FormsAcuaticos vieFromAScuatico = new FormsAcuaticos();
+                        vieFromAScuatico.setEstadoAcciones(estadoAccion);
+                        vieFromAScuatico.setReptilAcuatico((ReptilAcuatico) animalesList.get(jlistAnimales.getSelectedIndex()));
                         vieFromAScuatico.setTitle("Registro Animal");
                         vieFromAScuatico.setContentPane(vieFromAScuatico.getPanelAcuatico());
                         vieFromAScuatico.setSize(1000,400);
                         vieFromAScuatico.setVisible(true);
                         vieFromAScuatico.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                        addJListAnimales("all");
                     }
                 }else {
                     JOptionPane.showMessageDialog(null,"Debe elegir una especie para intercambiar");
@@ -181,19 +188,24 @@ public class Home extends JFrame {
                         Serpiente editeSerpiente = (Serpiente) animalesList.get(jlistAnimales.getSelectedIndex());
                         FormsSerpiente viewFormSerpiente = new FormsSerpiente();
                         viewFormSerpiente.setEstadoAcciones(estadoAccion);
-                        viewFormSerpiente.setSerpiente(editeSerpiente);
+                        viewFormSerpiente.setSerpiente2(editeSerpiente);
                         viewFormSerpiente.setTitle("Registro Animal");
                         viewFormSerpiente.setContentPane(viewFormSerpiente.getPanelSerpiente());
                         viewFormSerpiente.setSize(1000,400);
                         viewFormSerpiente.setVisible(true);
                         viewFormSerpiente.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                        addJListAnimales("all");
                     }else if (estadoEspecie=="acuaticos"){
+                        ReptilAcuatico editeAcuatico = (ReptilAcuatico) animalesList.get(jlistAnimales.getSelectedIndex());
                         FormsAcuaticos vieFromAScuatico = new FormsAcuaticos();
+                        vieFromAScuatico.setEstadoAcciones(estadoAccion);
+                        vieFromAScuatico.setReptilAcuatico2(editeAcuatico);
                         vieFromAScuatico.setTitle("Registro Animal");
                         vieFromAScuatico.setContentPane(vieFromAScuatico.getPanelAcuatico());
                         vieFromAScuatico.setSize(1000,400);
                         vieFromAScuatico.setVisible(true);
                         vieFromAScuatico.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                        addJListAnimales("all");
                     }
                 }else {
                     JOptionPane.showMessageDialog(null,"Debe elegir una especie para editar");
@@ -208,12 +220,13 @@ public class Home extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 if (jlistAnimales.getSelectedIndex()>=0){
                     Animal animalSelected =  animalesList.get(jlistAnimales.getSelectedIndex());
-
                     if (estadoEspecie=="serpientes"){
-
+                        //serpientesController.eliminar((Serpiente) animalSelected);
                     }else if (estadoEspecie=="acuaticos"){
+                        addJListAnimales("acuaticos");
+                        System.out.println("hol.a");
                         acuaticosController.eliminar((ReptilAcuatico) animalSelected);
-                        System.out.println(animalSelected.toString());
+                        addJListAnimales("acuaticos");
                     }
                 }else {
                     JOptionPane.showMessageDialog(null,"Debe elegir una especie para editar");
@@ -224,16 +237,16 @@ public class Home extends JFrame {
 
     }
 
-    private void addJListAnimales(String filter) {
+    public void addJListAnimales(String filter) {
         modelo = new DefaultListModel<>();
         animalesList=new ArrayList<>();
         if(filter=="serpientes"){
             animalesList.addAll(serpientesController.listSerpientes());
         }else if (filter=="acuaticos"){
             animalesList.addAll(acuaticosController.listReptilesAcuaticos());
-        }else{
-            animalesList.addAll(acuaticosController.listReptilesAcuaticos());
-            animalesList.addAll(serpientesController.listSerpientes());
+            for (Animal animal : animalesList){
+                System.out.println(animal.toString());
+            }
         }
         for(Animal animal : animalesList) {
             modelo.addElement(animal.getNombreCientifico());
@@ -250,6 +263,12 @@ public class Home extends JFrame {
         }
     }
 
-
+    public String identificarAnimal(Animal animal) {
+        if(animal instanceof Serpiente) {
+            return "serpientes";
+        }else{
+            return "acuaticos";
+        }
+    }
 
 }

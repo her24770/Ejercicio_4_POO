@@ -44,6 +44,10 @@ public class FormsSerpiente extends JFrame{
 
     public void setSerpiente(Serpiente serpiente) {
         this.serpiente = serpiente;
+    }
+
+    public void setSerpiente2(Serpiente serpiente) {
+        this.serpiente = serpiente;
         if(serpiente!=null){
             inputNOmbre.setText(serpiente.getNombreCientifico());
             inputDieta.setText(serpiente.getDieta());
@@ -63,13 +67,8 @@ public class FormsSerpiente extends JFrame{
 
     //Controlador
     SerpientesController serpientesController=new SerpientesController();
-    Home viewHome=new Home();
 
     public FormsSerpiente(){
-        serpiente=(Serpiente) viewHome.getSelectedAnimal();
-        //llenarinputs(serpiente);
-
-
         btnaddSerpiente.addActionListener(new ActionListener() {
            @Override
            public void actionPerformed(ActionEvent e) {
@@ -91,11 +90,11 @@ public class FormsSerpiente extends JFrame{
                    if(esNumeroValido(inputLongitud.getText())||esNumeroValido(inputVidaEzperanza.getText())
                            ||esNumeroValido(inputPeso.getText())||esNumeroValido(inputTemperatura.getText())
                            ||esNumeroValido(inputHuevos.getText())){
-                       newSerpiente.setLongitud(Integer.parseInt(inputLongitud.getText()));
+                       newSerpiente.setLongitud(Double.parseDouble(inputLongitud.getText()));
                        newSerpiente.setVidaEsperanza(Integer.parseInt(inputVidaEzperanza.getText()));
-                       newSerpiente.setPeso(Integer.parseInt(inputPeso.getText()));
+                       newSerpiente.setPeso(Double.parseDouble(inputPeso.getText()));
                        newSerpiente.setTemperatura(Integer.parseInt(inputTemperatura.getText()));
-                       newSerpiente.setHuevos(Integer.parseInt(inputHuevos.getText()));
+                       newSerpiente.setHuevos(Double.parseDouble(inputHuevos.getText()));
                    }else{
                        JOptionPane.showMessageDialog(null,"Recuerde usar datos numericos en las casillas indicadas");
                    }
@@ -130,9 +129,6 @@ public class FormsSerpiente extends JFrame{
                        }
                    }
                    dispose();
-
-                   //
-
                }
            }
         });
@@ -145,17 +141,6 @@ public class FormsSerpiente extends JFrame{
         } catch (NumberFormatException e) {
             return false;
         }
-    }
-
-    public double presupuestoActual() {
-        SerpientesController serpientesController = new SerpientesController();
-        ReptilesAcuaticosController acuaticosController = new ReptilesAcuaticosController();
-        List<Animal> animales = new ArrayList<>();
-        animales.addAll(serpientesController.listSerpientes());
-        animales.addAll(acuaticosController.listReptilesAcuaticos());
-        double presupuesto = 0;
-
-        return presupuesto;
     }
 
     public boolean esSyN(String texto) {
@@ -173,7 +158,4 @@ public class FormsSerpiente extends JFrame{
             return "n";  // Si es false, retorna "n"
         }
     }
-
-
-
 }
