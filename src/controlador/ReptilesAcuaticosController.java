@@ -3,6 +3,7 @@ import clases.*;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
 import java.util.List;
 
 /**
@@ -200,40 +201,45 @@ public class ReptilesAcuaticosController {
         List<ReptilAcuatico> allReptilesAcuaticos = listReptilesAcuaticos();
         List<String[]> nuevoCSV = new ArrayList<>();
 
-        for (ReptilAcuatico reptilAcuatico : allReptilesAcuaticos) {
-            if (reptilAcuatico.toString().equals(egreso.toString())) {
-                int fila = allReptilesAcuaticos.indexOf(reptilAcuatico) + 1;
+        try {
+            for (ReptilAcuatico reptilAcuatico : allReptilesAcuaticos) {
+                if (reptilAcuatico.toString().equals(egreso.toString())) {
+                    int fila = allReptilesAcuaticos.indexOf(reptilAcuatico) + 1;
 
-                allReptilesAcuaticos.remove(fila - 1);  // Eliminamos el reptil de la lista
+                    allReptilesAcuaticos.remove(fila - 1);  // Eliminamos el reptil de la lista
 
-                List<String[]> rows = new ArrayList<>();
-                try (BufferedReader br = new BufferedReader(new FileReader("src/bd/reptilesAcuaticosBD.csv"))) {
-                    String line;
-                    while ((line = br.readLine()) != null) {
-                        // Dividir cada línea por comas
-                        String[] data = line.split(",");
-                        rows.add(data);
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-                // Guardar los cambios escribiendo el archivo CSV de nuevo
-                try (BufferedWriter bw = new BufferedWriter(new FileWriter("src/bd/reptilesAcuaticosBD.csv"))) {
-                    for (String[] row : rows) {
-                        if (rows.indexOf(row) != fila) {
-                            bw.write(String.join(",", row));
-                            bw.newLine();
+                    List<String[]> rows = new ArrayList<>();
+                    try (BufferedReader br = new BufferedReader(new FileReader("src/bd/reptilesAcuaticosBD.csv"))) {
+                        String line;
+                        while ((line = br.readLine()) != null) {
+                            // Dividir cada línea por comas
+                            String[] data = line.split(",");
+                            rows.add(data);
                         }
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
 
-            } else {
-                msg = "Este animal no se encuentra dentro de nuestro inventario.";
+                    // Guardar los cambios escribiendo el archivo CSV de nuevo
+                    try (BufferedWriter bw = new BufferedWriter(new FileWriter("src/bd/reptilesAcuaticosBD.csv"))) {
+                        for (String[] row : rows) {
+                            if (rows.indexOf(row) != fila) {
+                                bw.write(String.join(",", row));
+                                bw.newLine();
+                            }
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                } else {
+                    msg = "Este animal no se encuentra dentro de nuestro inventario.";
+                }
             }
+        } catch (ConcurrentModificationException e) {
+            // Ignora la excepción o maneja el error
         }
+
 
         return msg;
     }

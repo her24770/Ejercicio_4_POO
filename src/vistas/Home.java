@@ -77,6 +77,7 @@ public class Home extends JFrame {
             @Override
             public void valueChanged(ListSelectionEvent e) {
                 if(jlistAnimales.getSelectedIndex()>=0){
+                    estadoEspecie=identificarAnimal(animalesList.get(jlistAnimales.getSelectedIndex()));
                     selectedAnimal=animalesList.get(jlistAnimales.getSelectedIndex());
                     textAreaInformacion.setText(animalesList.get(jlistAnimales.getSelectedIndex()).toString());
                 }else{
@@ -217,7 +218,10 @@ public class Home extends JFrame {
                     if (estadoEspecie=="serpientes"){
                         //serpientesController.eliminar((Serpiente) animalSelected);
                     }else if (estadoEspecie=="acuaticos"){
+                        addJListAnimales("acuaticos");
+                        System.out.println("hol.a");
                         acuaticosController.eliminar((ReptilAcuatico) animalSelected);
+                        addJListAnimales("acuaticos");
                     }
                 }else {
                     JOptionPane.showMessageDialog(null,"Debe elegir una especie para editar");
@@ -228,16 +232,16 @@ public class Home extends JFrame {
 
     }
 
-    private void addJListAnimales(String filter) {
+    public void addJListAnimales(String filter) {
         modelo = new DefaultListModel<>();
         animalesList=new ArrayList<>();
         if(filter=="serpientes"){
             animalesList.addAll(serpientesController.listSerpientes());
         }else if (filter=="acuaticos"){
             animalesList.addAll(acuaticosController.listReptilesAcuaticos());
-        }else{
-            animalesList.addAll(acuaticosController.listReptilesAcuaticos());
-            animalesList.addAll(serpientesController.listSerpientes());
+            for (Animal animal : animalesList){
+                System.out.println(animal.toString());
+            }
         }
         for(Animal animal : animalesList) {
             modelo.addElement(animal.getNombreCientifico());
@@ -254,6 +258,12 @@ public class Home extends JFrame {
         }
     }
 
-
+    public String identificarAnimal(Animal animal) {
+        if(animal instanceof Serpiente) {
+            return "serpientes";
+        }else{
+            return "acuaticos";
+        }
+    }
 
 }
