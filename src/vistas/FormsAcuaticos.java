@@ -83,13 +83,13 @@ public class FormsAcuaticos extends JFrame{
                                 || esNumeroValido(inputPeso.getText()) || esNumeroValido(inputTemperatura.getText())
                                 || esNumeroValido(inputHuevos.getText()) || esNumeroValido(inputNado.getText())
                                 || esNumeroValido(inputBuceo.getText()) || esNumeroValido(inputPresupuesto.getText())) {
-                            newAcuatico.setLongitud(Integer.parseInt(inputLongitud.getText()));
+                            newAcuatico.setLongitud(Double.parseDouble(inputLongitud.getText()));
                             newAcuatico.setVidaEsperanza(Integer.parseInt(inputVidaEzperanza.getText()));
-                            newAcuatico.setPeso(Integer.parseInt(inputPeso.getText()));
+                            newAcuatico.setPeso(Double.parseDouble(inputPeso.getText()));
                             newAcuatico.setTemperatura(Integer.parseInt(inputTemperatura.getText()));
-                            newAcuatico.setHuevos(Integer.parseInt(inputHuevos.getText()));
-                            newAcuatico.setHuevos(Integer.parseInt(inputBuceo.getText()));
-                            newAcuatico.setHuevos(Integer.parseInt(inputNado.getText()));
+                            newAcuatico.setHuevos(Double.parseDouble(inputHuevos.getText()));
+                            newAcuatico.setBuceo(Double.parseDouble(inputBuceo.getText()));
+                            newAcuatico.setNado(Double.parseDouble(inputNado.getText()));
                         } else {
                             JOptionPane.showMessageDialog(null, "Recuerde usar datos numericos en las casillas indicadas");
                         }

@@ -89,11 +89,11 @@ public class FormsSerpiente extends JFrame{
                    if(esNumeroValido(inputLongitud.getText())||esNumeroValido(inputVidaEzperanza.getText())
                            ||esNumeroValido(inputPeso.getText())||esNumeroValido(inputTemperatura.getText())
                            ||esNumeroValido(inputHuevos.getText())){
-                       newSerpiente.setLongitud(Integer.parseInt(inputLongitud.getText()));
+                       newSerpiente.setLongitud(Double.parseDouble(inputLongitud.getText()));
                        newSerpiente.setVidaEsperanza(Integer.parseInt(inputVidaEzperanza.getText()));
-                       newSerpiente.setPeso(Integer.parseInt(inputPeso.getText()));
+                       newSerpiente.setPeso(Double.parseDouble(inputPeso.getText()));
                        newSerpiente.setTemperatura(Integer.parseInt(inputTemperatura.getText()));
-                       newSerpiente.setHuevos(Integer.parseInt(inputHuevos.getText()));
+                       newSerpiente.setHuevos(Double.parseDouble(inputHuevos.getText()));
                    }else{
                        JOptionPane.showMessageDialog(null,"Recuerde usar datos numericos en las casillas indicadas");
                    }
