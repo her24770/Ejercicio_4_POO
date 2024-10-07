@@ -180,4 +180,55 @@ public class SerpientesController{
         return msg;
 
     }
+
+    public String eliminar(Serpiente egreso) {
+        String msg = "";
+
+        List<Serpiente> allSerpientes = listSerpientes();
+        List<String[]> nuevoCSV = new ArrayList<>();
+
+        try {
+            for (Serpiente serpiente : allSerpientes) {
+                if (serpiente.toString().equals(egreso.toString())) {
+                    int fila = allSerpientes.indexOf(serpiente) + 1;
+
+                    allSerpientes.remove(fila - 1);  // Eliminamos el reptil de la lista
+
+                    List<String[]> rows = new ArrayList<>();
+                    try (BufferedReader br = new BufferedReader(new FileReader("src/bd/reptilesSerpientesBD.csv"))) {
+                        String line;
+                        while ((line = br.readLine()) != null) {
+                            // Dividir cada línea por comas
+                            String[] data = line.split(",");
+                            rows.add(data);
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    // Guardar los cambios escribiendo el archivo CSV de nuevo
+                    try (BufferedWriter bw = new BufferedWriter(new FileWriter("src/bd/reptilesSerpientesBD.csv"))) {
+                        for (String[] row : rows) {
+                            if (rows.indexOf(row) != fila) {
+                                bw.write(String.join(",", row));
+                                bw.newLine();
+                            }
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                } else {
+                    msg = "Este animal no se encuentra dentro de nuestro inventario.";
+                }
+            }
+        } catch (ConcurrentModificationException e) {
+            // Ignora la excepción o maneja el error
+        }
+
+
+        return msg;
+    }
+
+
 }
