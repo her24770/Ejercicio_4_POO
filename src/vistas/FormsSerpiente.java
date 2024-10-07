@@ -35,8 +35,8 @@ public class FormsSerpiente extends JFrame{
 
     //variables
     private Serpiente serpiente = null;
-    private Animal animal = null;
     private String estadoAcciones="add";
+    private double presupuesto;
 
     public void setEstadoAcciones(String estadoAcciones) {
         this.estadoAcciones = estadoAcciones;
@@ -44,6 +44,10 @@ public class FormsSerpiente extends JFrame{
 
     public void setSerpiente(Serpiente serpiente) {
         this.serpiente = serpiente;
+    }
+
+    public void setPresupuesto(double presupuesto) {
+        this.presupuesto = presupuesto;
     }
 
     public void setSerpiente2(Serpiente serpiente) {
@@ -67,6 +71,7 @@ public class FormsSerpiente extends JFrame{
 
     //Controlador
     SerpientesController serpientesController=new SerpientesController();
+    ReptilesAcuaticosController acuaticosController=new ReptilesAcuaticosController();
 
     public FormsSerpiente(){
         btnaddSerpiente.addActionListener(new ActionListener() {
@@ -108,7 +113,8 @@ public class FormsSerpiente extends JFrame{
                    String message="Costo total (recinto + comida) : [" + newSerpiente.presupuesto()[0] + "-" + newSerpiente.presupuesto()[1] + "] Quetzales";
                    //
                    if (estadoAcciones=="add"){
-                       if(1==2){
+                       Animal animal = newSerpiente;
+                       if(presupuesto < animal.presupuestoZoo(addJListAnimales())){
                            //Validacion de presupuesto
                            JOptionPane.showMessageDialog(null,"El presupuesto no es suficiente para mantener la especie");
                        }else{
@@ -118,8 +124,8 @@ public class FormsSerpiente extends JFrame{
                            }
                        }
                    }else if(estadoAcciones=="inter"||estadoAcciones=="edit"){
-                       System.out.println(estadoAcciones);
-                       if(1==2){
+                       Animal animal = newSerpiente;
+                       if(presupuesto < animal.presupuestoZoo(addJListAnimales())){
                            JOptionPane.showMessageDialog(null,"El presupuesto no es suficiente para mantener la especie");
                        }else{
                            int respuesta = JOptionPane.showConfirmDialog(null, message, "Confirmación", JOptionPane.YES_NO_OPTION);
@@ -157,5 +163,16 @@ public class FormsSerpiente extends JFrame{
         } else {
             return "n";  // Si es false, retorna "n"
         }
+    }
+
+    public List<Animal> addJListAnimales() {
+        List<Animal> animalesList = new ArrayList<>();
+        animalesList.addAll(serpientesController.listSerpientes());
+        animalesList.addAll(acuaticosController.listReptilesAcuaticos());
+        for(Animal animal : animalesList){
+            System.out.println(animal.toString());
+        }
+        return animalesList;
+
     }
 }

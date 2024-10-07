@@ -28,7 +28,7 @@ public class Home extends JFrame {
     private DefaultListModel<String> modelo;
     private String estadoEspecie="all";
     private String estadoAccion="";
-    private double presupuesto =0;
+    private double presupuesto =500000;
     private Animal selectedAnimal;
 
     public Animal getSelectedAnimal() {
@@ -121,6 +121,7 @@ public class Home extends JFrame {
                 estadoAccion="add";
                 if (estadoEspecie=="serpientes"){
                     FormsSerpiente viewFormSerpiente = new FormsSerpiente();
+                    viewFormSerpiente.setPresupuesto(presupuesto);
                     viewFormSerpiente.setEstadoAcciones("add");
                     viewFormSerpiente.setTitle("Registro Animal");
                     viewFormSerpiente.setContentPane(viewFormSerpiente.getPanelSerpiente());
@@ -131,6 +132,7 @@ public class Home extends JFrame {
                 }else if (estadoEspecie=="acuaticos"){
                     FormsAcuaticos vieFromAScuatico = new FormsAcuaticos();
                     vieFromAScuatico.setEstadoAcciones("add");
+                    vieFromAScuatico.setPresupuesto(presupuesto);
                     vieFromAScuatico.setTitle("Registro Animal");
                     vieFromAScuatico.setContentPane(vieFromAScuatico.getPanelAcuatico());
                     vieFromAScuatico.setSize(1000,400);
@@ -163,6 +165,7 @@ public class Home extends JFrame {
                     }else if (estadoEspecie=="acuaticos"){
                         FormsAcuaticos vieFromAScuatico = new FormsAcuaticos();
                         vieFromAScuatico.setEstadoAcciones(estadoAccion);
+                        vieFromAScuatico.setPresupuesto(presupuesto);
                         vieFromAScuatico.setReptilAcuatico((ReptilAcuatico) animalesList.get(jlistAnimales.getSelectedIndex()));
                         vieFromAScuatico.setTitle("Registro Animal");
                         vieFromAScuatico.setContentPane(vieFromAScuatico.getPanelAcuatico());
@@ -199,6 +202,7 @@ public class Home extends JFrame {
                         ReptilAcuatico editeAcuatico = (ReptilAcuatico) animalesList.get(jlistAnimales.getSelectedIndex());
                         FormsAcuaticos vieFromAScuatico = new FormsAcuaticos();
                         vieFromAScuatico.setEstadoAcciones(estadoAccion);
+                        vieFromAScuatico.setPresupuesto(presupuesto);
                         vieFromAScuatico.setReptilAcuatico2(editeAcuatico);
                         vieFromAScuatico.setTitle("Registro Animal");
                         vieFromAScuatico.setContentPane(vieFromAScuatico.getPanelAcuatico());

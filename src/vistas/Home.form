@@ -79,7 +79,7 @@
                 </constraints>
                 <properties>
                   <model>
-                    <item value="Todos"/>
+                    <item value=""/>
                     <item value="Serpientes"/>
                     <item value="Reptiles Acuaticos"/>
                   </model>
