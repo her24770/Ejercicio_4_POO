@@ -1,7 +1,5 @@
 
 import clases.Animal;
-import clases.ReptilAcuatico;
-import clases.Serpiente;
 import controlador.ReptilesAcuaticosController;
 import controlador.SerpientesController;
 import vistas.Home;
@@ -31,13 +29,5 @@ public class Main {
         viewHome.setSize(1000,400);
         viewHome.setVisible(true);
         viewHome.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        SerpientesController serpienteC =  new SerpientesController();
-        Animal animal = new Animal();
-
-        System.out.println(animales.size());
-        System.out.println(animal.presupuestoZoo(animales));
     }
-
-
 }

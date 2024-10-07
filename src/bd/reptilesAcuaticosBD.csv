@@ -2,4 +2,4 @@ nombreCientifico, descripcionHabitat, vidaEsperanza, intercambio, temperatura, h
 Skibidi Sigma1,Acuatico,34, false,78,3,34,true,azul,34,t,false,45,98
 Skibidi Sigma2,Acuatico,34, false,78,3,34,true,azul,34,t,false,45,98
 Skibidi Sigma3,Acuatico,34, true,78,3,34,true,azul,34,s,false,45,98
-Skibidi Sigma4,Acuatico,34, false,78,3,34,true,azul,34,t,false,45,98
+Skibidi Sigma4,Acuatico,34,false,78,3.0,34.0,false,azul,34.0,t,false,45.0,98.0

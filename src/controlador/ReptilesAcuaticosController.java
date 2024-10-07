@@ -121,8 +121,6 @@ public class ReptilesAcuaticosController {
 
                 allReptilesAcuaticos.set(fila - 1, ingreso);
 
-                System.out.println(allReptilesAcuaticos);
-
                 String nuevaFila =
                         ingreso.getNombreCientifico() + "," +
                                 ingreso.getDescripcionHabitat() + "," +

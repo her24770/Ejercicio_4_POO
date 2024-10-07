@@ -7,6 +7,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
 import java.util.List;
 
 /**
@@ -122,8 +123,6 @@ public class SerpientesController{
                 int fila = allSerpientes.indexOf(serpiente)+1;
 
                 allSerpientes.set(fila-1, ingreso);
-
-                System.out.println(allSerpientes);
 
                 String nuevaFila =
                         ingreso.getNombreCientifico()+","+

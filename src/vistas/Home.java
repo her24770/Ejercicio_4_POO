@@ -28,7 +28,7 @@ public class Home extends JFrame {
     private DefaultListModel<String> modelo;
     private String estadoEspecie="all";
     private String estadoAccion="";
-    private double presupuesto =500000;
+    private double presupuesto =1000000;
     private Animal selectedAnimal;
 
     public Animal getSelectedAnimal() {
@@ -102,7 +102,7 @@ public class Home extends JFrame {
         btnPresupuesto.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String datoIngresado = JOptionPane.showInputDialog(null, "Presupuesto anual:", "Quetzalez", JOptionPane.QUESTION_MESSAGE);
+                String datoIngresado = JOptionPane.showInputDialog(null, "Presupuesto acuatl: Q"+presupuesto+". Ingresar uno nuevo :", "Quetzalez", JOptionPane.QUESTION_MESSAGE);
                 if(!esNumeroValido(datoIngresado)){
                     JOptionPane.showMessageDialog(null, "No es dato numerico", "Error", JOptionPane.ERROR_MESSAGE);
                 }
@@ -155,6 +155,7 @@ public class Home extends JFrame {
                     if (estadoEspecie=="serpientes"){
                         FormsSerpiente viewFormSerpiente = new FormsSerpiente();
                         viewFormSerpiente.setEstadoAcciones(estadoAccion);
+                        viewFormSerpiente.setPresupuesto(presupuesto);
                         viewFormSerpiente.setSerpiente((Serpiente) animalesList.get(jlistAnimales.getSelectedIndex()));
                         viewFormSerpiente.setTitle("Registro Animal");
                         viewFormSerpiente.setContentPane(viewFormSerpiente.getPanelSerpiente());
@@ -191,6 +192,7 @@ public class Home extends JFrame {
                         Serpiente editeSerpiente = (Serpiente) animalesList.get(jlistAnimales.getSelectedIndex());
                         FormsSerpiente viewFormSerpiente = new FormsSerpiente();
                         viewFormSerpiente.setEstadoAcciones(estadoAccion);
+                        viewFormSerpiente.setPresupuesto(presupuesto);
                         viewFormSerpiente.setSerpiente2(editeSerpiente);
                         viewFormSerpiente.setTitle("Registro Animal");
                         viewFormSerpiente.setContentPane(viewFormSerpiente.getPanelSerpiente());
@@ -225,10 +227,9 @@ public class Home extends JFrame {
                 if (jlistAnimales.getSelectedIndex()>=0){
                     Animal animalSelected =  animalesList.get(jlistAnimales.getSelectedIndex());
                     if (estadoEspecie=="serpientes"){
-                        //serpientesController.eliminar((Serpiente) animalSelected);
+                        serpientesController.eliminar((Serpiente) animalSelected);
+                        addJListAnimales("serpientes");
                     }else if (estadoEspecie=="acuaticos"){
-                        addJListAnimales("acuaticos");
-                        System.out.println("hol.a");
                         acuaticosController.eliminar((ReptilAcuatico) animalSelected);
                         addJListAnimales("acuaticos");
                     }

@@ -169,9 +169,6 @@ public class FormsSerpiente extends JFrame{
         List<Animal> animalesList = new ArrayList<>();
         animalesList.addAll(serpientesController.listSerpientes());
         animalesList.addAll(acuaticosController.listReptilesAcuaticos());
-        for(Animal animal : animalesList){
-            System.out.println(animal.toString());
-        }
         return animalesList;
 
     }
